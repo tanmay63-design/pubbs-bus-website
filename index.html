@@ -1,0 +1,1556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Section with Background Video</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* ── Floating Header ── */
+        header {
+            position: fixed;
+            top: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 60px);
+            max-width: 1200px;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 28px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+        }
+
+        /* Logo */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-placeholder {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 10px;
+        }
+
+        /* Nav */
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        nav a {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14.5px;
+            font-weight: 500;
+            padding: 8px 14px;
+            border-radius: 8px;
+            transition: background 0.2s ease;
+            white-space: nowrap;
+        }
+
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        nav a .arrow {
+            font-size: 10px;
+            opacity: 0.8;
+        }
+
+        /* ── Fade-up animation ── */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeUpHeader {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+
+        header {
+            animation: fadeUpHeader 0.7s ease forwards;
+            opacity: 0;
+            animation-delay: 0.1s;
+        }
+
+        /* ── Hero ── */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .hero video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1;
+        }
+
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 22px;
+            width: 90%;
+            max-width: 1000px;
+        }
+
+        /* Hero overlay image */
+        .hero-image-wrap {
+            position: relative;
+            z-index: 10;
+            width: 78%;
+            margin: -131px auto 0;
+            opacity: 0;
+            animation: fadeUp 0.9s ease forwards;
+            animation-delay: 1.15s;
+            perspective: 1000px;
+            height: fit-content;
+        }
+
+        .hero-image-wrap img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 16px;
+            box-shadow: 0 0 #0000004d, 0 9px 20px #0000004a, 0 37px 37px #00000042, 0 84px 50px #00000026, 0 149px 60px #0000000a, 0 233px 65px #00000003;
+            transform-origin: center top;
+            transition: transform 0.1s ease-out;
+        }
+
+        /* ── Next Section ── */
+        .next-section {
+            background: #ffffff;
+            width: 100%;
+            padding-top: 230px;
+            padding-bottom: 160px;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 48px;
+        }
+
+        .next-section-heading {
+            font-size: 28px;
+            font-weight: 700;
+            color: #0f172a;
+            text-align: center;
+            white-space: nowrap;
+            line-height: 1.3;
+        }
+
+        .next-section-heading span {
+            color: #1C7BF6;
+        }
+
+        .logos-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 100px;
+            flex-wrap: wrap;
+        }
+
+        .logos-row img {
+            height: 56px;
+            width: auto;
+            object-fit: contain;
+            filter: grayscale(20%);
+            transition: filter 0.2s ease;
+        }
+
+        .logos-row img:hover {
+            filter: grayscale(0%);
+        }
+
+        /* ── Scroll fade-up ── */
+        .scroll-fade {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            will-change: opacity, transform;
+            backface-visibility: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .scroll-fade.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scroll-fade:nth-child(2) { transition-delay: 0.15s; }
+
+        /* Ecosystem staggered fade-up */
+        .ecosystem-heading.scroll-fade                        { transition-delay: 0s; }
+        .ecosystem-cards .eco-card:nth-child(1).scroll-fade   { transition-delay: 0.18s; }
+        .ecosystem-cards .eco-card:nth-child(2).scroll-fade   { transition-delay: 0.36s; }
+        .ecosystem-cards .eco-card:nth-child(3).scroll-fade   { transition-delay: 0.54s; }
+
+        /* Green dot */
+        .green-dot {
+            width: 8px;
+            height: 8px;
+            background: #22c55e;
+            border-radius: 50%;
+            margin-right: 8px;
+            box-shadow: 0 0 6px #22c55e;
+            flex-shrink: 0;
+        }
+
+        /* Chip */
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            padding: 7px 18px;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.28);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #ffffff;
+            letter-spacing: 0.3px;
+            opacity: 0;
+            animation: fadeUp 0.7s ease forwards;
+            animation-delay: 0.35s;
+        }
+
+        /* Main heading */
+        .hero-heading {
+            font-size: clamp(28px, 4.5vw, 52px);
+            font-weight: 700;
+            line-height: 1.2;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+            opacity: 0;
+            animation: fadeUp 0.7s ease forwards;
+            animation-delay: 0.55s;
+        }
+
+        /* Subtext */
+        .hero-sub {
+            font-size: clamp(14px, 1.6vw, 17px);
+            font-weight: 400;
+            line-height: 1.65;
+            color: rgba(255, 255, 255, 0.78);
+            max-width: 680px;
+            opacity: 0;
+            animation: fadeUp 0.7s ease forwards;
+            animation-delay: 0.75s;
+        }
+
+        /* CTA Button */
+        .btn-demo {
+            display: inline-block;
+            margin-top: 6px;
+            padding: 14px 34px;
+            background: #1C7BF6;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.2s ease;
+            opacity: 0;
+            animation: fadeUp 0.7s ease forwards;
+            animation-delay: 0.95s;
+        }
+
+        .btn-demo:hover {
+            background: #0f66d8;
+            transform: translateY(-2px);
+        }
+
+        /* ── Ecosystem Section ── */
+        .ecosystem-section {
+            position: relative;
+            width: 100%;
+            min-height: 912px;
+            padding: 120px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 80px;
+            background: linear-gradient(to bottom, #252C35, #051831);
+            overflow: hidden;
+        }
+
+        #particles-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .ecosystem-heading {
+            font-size: 36px;
+            font-weight: 600;
+            color: #ffffff;
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            position: relative;
+            z-index: 1;
+        }
+
+        .ecosystem-cards {
+            width: 1320px;
+            max-width: calc(100% - 48px);
+            display: flex;
+            gap: 48px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .eco-card {
+            flex: 1;
+            height: 550px;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 24px;
+        }
+
+        .eco-card-label {
+            position: absolute;
+            bottom: 24px;
+            left: 24px;
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(51.2px);
+            -webkit-backdrop-filter: blur(51.2px);
+            font-size: 24px;
+            font-weight: 400;
+            font-family: 'Inter', sans-serif;
+            color: #ffffff;
+            white-space: nowrap;
+        }
+
+        /* ──────────── Features Tabs Section ──────────── */
+        .features-section {
+            position: relative;
+            width: 100%;
+            padding: 180px 0 220px;
+            background: #FFFFFF;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 80px;
+            isolation: isolate;
+            overflow: hidden;
+        }
+
+        .features-bg-svg {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 220px;
+            width: 100%;
+            height: 900px;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .features-heading {
+            position: relative;
+            z-index: 2;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 36px;
+            line-height: 44px;
+            letter-spacing: -0.02em;
+            color: #000000;
+            text-align: center;
+            padding: 0 24px;
+        }
+
+        .features-card {
+            position: relative;
+            z-index: 1;
+            width: 1350px;
+            max-width: calc(100% - 48px);
+            background: #FFFFFF;
+            border-radius: 12px;
+            box-shadow:
+                0 -8px 21.6px rgba(28, 123, 246, 0.07),
+                0 19px 57.1px rgba(28, 123, 246, 0.31);
+            overflow: hidden;
+        }
+
+        .features-tabs {
+            display: flex;
+            width: 100%;
+        }
+
+        .features-tab {
+            flex: 1 1 0;
+            height: 77px;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            padding: 24px;
+            background: #FFFFFF;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 24px;
+            line-height: 29px;
+            letter-spacing: -0.02em;
+            color: #9E9E9E;
+            transition: color 0.25s ease, background 0.25s ease;
+            user-select: none;
+        }
+
+        .features-tab + .features-tab {
+            box-shadow: inset 1px 0 0 rgba(28, 123, 246, 0.08);
+        }
+
+        .features-tab svg.tab-icon {
+            width: 24px;
+            height: 24px;
+            fill: #9E9E9E;
+            transition: fill 0.25s ease;
+            flex-shrink: 0;
+        }
+
+        .features-tab:hover {
+            background: #F7FAFF;
+            color: #1C7BF6;
+        }
+        .features-tab:hover svg.tab-icon { fill: #1C7BF6; }
+
+        .features-tab .tab-indicator {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 3px;
+            width: 100%;
+            background: #1C7BF6;
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .features-tab.active {
+            color: #000000;
+            background: #FFFFFF;
+        }
+        .features-tab.active svg.tab-icon { fill: #1C7BF6; }
+        .features-tab.active .tab-indicator { transform: scaleX(1); }
+
+        .features-panel {
+            box-sizing: border-box;
+            display: none;
+            flex-direction: row;
+            align-items: center;
+            gap: 96px;
+            padding: 64px 40px 40px;
+            background: linear-gradient(180deg, #F4F9FF 0%, #FFFFFF 45.36%);
+            border-radius: 0 0 12px 12px;
+        }
+        .features-panel.active {
+            display: flex;
+        }
+
+        .features-left {
+            flex: 1 1 0;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            min-width: 0;
+        }
+
+        .features-title {
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 28px;
+            line-height: 1.33;
+            letter-spacing: -0.02em;
+            color: #000000;
+        }
+
+        .features-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .feature-item {
+            box-sizing: border-box;
+            padding: 20px;
+            border: 2px solid #EAF3FF;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .feature-item:nth-child(1) {
+            background: linear-gradient(256.54deg, rgba(239, 246, 255, 0.5) 22.65%, rgba(255, 255, 255, 0.5) 72.06%);
+        }
+        .feature-item:nth-child(2) {
+            background: linear-gradient(91.6deg, rgba(239, 246, 255, 0.5) 0.8%, rgba(255, 255, 255, 0.5) 98.93%);
+        }
+        .feature-item:nth-child(3) {
+            background: linear-gradient(123.7deg, rgba(255, 255, 255, 0.5) 21.96%, rgba(239, 246, 255, 0.5) 70.01%);
+        }
+
+        .feature-head {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .feature-check {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #4ABC51;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .feature-check svg { width: 14px; height: 14px; fill: #fff; }
+
+        .feature-title {
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 1;
+            letter-spacing: -0.02em;
+            color: #000000;
+        }
+
+        .feature-desc {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 1.5;
+            letter-spacing: -0.02em;
+            color: #6B86A9;
+        }
+
+        .features-right {
+            flex: 1 1 0;
+            min-width: 0;
+            align-self: stretch;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .visual {
+            position: relative;
+            width: 100%;
+            max-width: 579px;
+            aspect-ratio: 579 / 628;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .visual-img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        /* Visual 1: Route Creation – map style */
+        .visual-1 {
+            background:
+                radial-gradient(circle at 30% 20%, #EAF3FF 0%, transparent 60%),
+                linear-gradient(180deg, #E8F1FF 0%, #C8DDFB 100%);
+        }
+        .visual-1 .map-stroke {
+            position: absolute;
+            inset: 0;
+        }
+        .visual-1 .route-card {
+            position: absolute;
+            right: 8%;
+            top: 8%;
+            width: 38%;
+            border-radius: 12px;
+            background: #fff;
+            box-shadow: 0 19px 32.7px -11px rgba(7, 46, 97, 0.62);
+            padding: 18px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .visual-1 .route-card h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: #0B305E;
+        }
+        .visual-1 .route-card .stop {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12px;
+            color: #4A5C73;
+        }
+        .visual-1 .route-card .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #1C7BF6;
+            border: 2px solid #fff;
+            box-shadow: 0 0 0 2px #1C7BF6;
+        }
+        .visual-1 .route-card .stop:nth-child(2) .dot { background: #4ABC51; box-shadow: 0 0 0 2px #4ABC51; }
+        .visual-1 .route-card .stop:nth-child(4) .dot { background: #AC1DFF; box-shadow: 0 0 0 2px #AC1DFF; }
+
+        /* Visual 2: Data Management */
+        .visual-2 {
+            background: #1C7BF6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            padding: 32px;
+        }
+        .visual-2 .data-grid {
+            position: relative;
+            width: 100%;
+            height: 60%;
+        }
+        .visual-2 .data-pane {
+            position: absolute;
+            border-radius: 6px;
+            background: linear-gradient(180deg, #ffffff 0%, #C3DEFF 100%);
+            border: 1px solid #80B7FF;
+            box-shadow: 4px 4px 14px rgba(15, 89, 185, 0.4);
+        }
+        .visual-2 .data-pane.p1 { width: 70%; height: 38%; top: 4%; left: 4%; }
+        .visual-2 .data-pane.p2 { width: 70%; height: 40%; bottom: 4%; right: 4%; }
+        .visual-2 .icon-row {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            padding: 16px 24px;
+            background: rgba(255, 255, 255, 0.29);
+            border-radius: 12px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .visual-2 .icon-box {
+            width: 88px;
+            height: 88px;
+            border-radius: 8px;
+            background: linear-gradient(180deg, #ffffff 0%, #C3DEFF 100%);
+            border: 1px solid #80B7FF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .visual-2 .icon-box svg { width: 44px; height: 44px; fill: #1C7BF6; }
+
+        /* Visual 3: Frequency Optimization */
+        .visual-3 {
+            background: linear-gradient(180deg, #0B305E 0%, #004EB3 100%);
+            padding: 32px;
+        }
+        .visual-3 .chart-card {
+            position: absolute;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            padding: 16px;
+        }
+        .visual-3 .chart-card.c1 { top: 6%; left: 6%; width: 78%; height: 38%; box-shadow: 0 27px 25px rgba(28, 123, 246, 0.39); }
+        .visual-3 .chart-card.c2 { top: 38%; left: 14%; width: 60%; height: 42%; box-shadow: 0 14px 18px rgba(0, 0, 0, 0.35); }
+        .visual-3 .chart-card.c3 {
+            bottom: 6%; right: 6%; width: 46%; height: 38%;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.39);
+            border-radius: 12px;
+        }
+        .visual-3 .chart-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: #0B305E;
+            margin-bottom: 8px;
+        }
+        .visual-3 .bar-row {
+            display: flex;
+            align-items: flex-end;
+            gap: 6px;
+            height: calc(100% - 26px);
+        }
+        .visual-3 .bar-row .bar {
+            flex: 1;
+            background: linear-gradient(180deg, #1C7BF6, #AC1DFF);
+            border-radius: 3px 3px 0 0;
+        }
+
+        /* Fade up tab inner content */
+        .features-panel.active .features-title,
+        .features-panel.active .feature-item,
+        .features-panel.active .features-right {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.6s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+        }
+        .features-panel.active .features-title { animation-delay: 0.05s; }
+        .features-panel.active .feature-item:nth-child(1) { animation-delay: 0.15s; }
+        .features-panel.active .feature-item:nth-child(2) { animation-delay: 0.28s; }
+        .features-panel.active .feature-item:nth-child(3) { animation-delay: 0.41s; }
+        .features-panel.active .features-right { animation-delay: 0.20s; }
+
+        /* Scroll fade for section as a whole */
+        .features-section .scroll-fade {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.22, 0.61, 0.36, 1), transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
+            will-change: opacity, transform;
+            backface-visibility: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        .features-section .scroll-fade.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 1100px) {
+            .features-panel { gap: 48px; padding: 48px 32px 32px; flex-direction: column; }
+            .features-tab { font-size: 18px; gap: 8px; padding: 18px; height: auto; }
+            .features-tab svg.tab-icon { width: 20px; height: 20px; }
+            .features-heading { font-size: 28px; line-height: 1.2; }
+            .features-title { font-size: 22px; }
+            .feature-title { font-size: 18px; }
+            .feature-desc { font-size: 16px; }
+            .features-section { padding: 120px 0 140px; }
+        }
+        @media (max-width: 640px) {
+            .features-tabs { flex-direction: column; }
+            .features-tab + .features-tab { border-left: none; border-top: 1px solid #ADD1FF; }
+            .features-tab { font-size: 16px; }
+            .features-tab .tab-icon-label { display: none; }
+        }
+
+        /* ──────────── Bus Background Section ──────────── */
+        .bus-background-section {
+            position: relative;
+            width: 100%;
+            background: #FFFFFF;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .bus-background-img {
+            display: block;
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .bus-bg-container-wrapper {
+            position: absolute;
+            top: 250px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+
+        /* Frame 801 */
+        .bus-bg-container {
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 48px;
+            gap: 70px;
+            width: 1320px;
+            height: auto;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(240, 251, 255, 0.4) 100%);
+            border: 2px solid #FFFFFF;
+            box-shadow: 0px 19px 36.2px rgba(28, 123, 246, 0.12);
+            backdrop-filter: blur(10.45px);
+            -webkit-backdrop-filter: blur(10.45px);
+            border-radius: 24px;
+            flex: none;
+            order: 0;
+            flex-grow: 0;
+            z-index: 1;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            will-change: opacity, transform;
+            backface-visibility: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .bus-bg-container.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Frame 799 */
+        .bus-bg-text-row {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 0px;
+            gap: 80px;
+            width: 1224px;
+            height: auto;
+            flex: none;
+            order: 0;
+            align-self: stretch;
+            flex-grow: 0;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition-delay: 0.2s;
+            will-change: opacity, transform;
+            backface-visibility: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .bus-bg-text-row.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .bus-bg-text-item {
+            margin: 0 auto;
+            width: 533px;
+            height: auto;
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 28px;
+            line-height: 34px;
+            text-align: center;
+            letter-spacing: -0.02em;
+            color: #414141;
+            flex: none;
+            flex-grow: 0;
+            word-wrap: break-word;
+        }
+
+        .bus-bg-text-item:nth-child(2) {
+            order: 1;
+        }
+
+        /* Frame 800 */
+        .bus-bg-numbers-row {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 0px;
+            gap: 80px;
+            width: 1224px;
+            height: 150px;
+            flex: none;
+            order: 1;
+            align-self: stretch;
+            flex-grow: 0;
+        }
+
+        .bus-bg-number-item {
+            margin: 0 auto;
+            width: 533px;
+            height: 150px;
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 150px;
+            line-height: 100%;
+            text-align: center;
+            letter-spacing: -0.07em;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            flex: none;
+            flex-grow: 0;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            will-change: opacity, transform;
+            backface-visibility: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .bus-bg-number-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .bus-bg-number-item:nth-child(1) {
+            background: linear-gradient(180deg, #AC1DFF 0%, #1C7BF6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            order: 0;
+            transition-delay: 0.4s;
+        }
+
+        .bus-bg-number-item:nth-child(2) {
+            background: linear-gradient(360deg, #AC1DFF 0%, #1C7BF6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            order: 1;
+            transition-delay: 0.5s;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Floating Header -->
+    <header>
+        <div class="logo">
+            <div class="logo-placeholder"></div>
+        </div>
+        <nav>
+            <a href="#">Software</a>
+            <a href="#">Features <span class="arrow">&#9660;</span></a>
+            <a href="#">Resources <span class="arrow">&#9660;</span></a>
+            <a href="#">Contact Us</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <video autoplay muted loop>
+            <source src="hero section.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="hero-content">
+            <span class="chip"><span class="green-dot"></span>IIT Kharagpur Initiative</span>
+            <h1 class="hero-heading">Integrated Planning and Operation Software for Bus Transit Operators</h1>
+            <p class="hero-sub">An Intelligent Urban Bus Transit Dispatch, Control and Surveillance System Using Artificial Intelligence and User Perception</p>
+            <a href="#" class="btn-demo">Book a Demo</a>
+        </div>
+    </div>
+
+    <!-- Hero image straddling video and next section -->
+    <div class="hero-image-wrap">
+        <img src="hero section image.png" alt="Platform Preview">
+    </div>
+
+    <!-- Next Section -->
+    <div class="next-section">
+        <h2 class="next-section-heading scroll-fade">First <span>"Make in India"</span> Product for Bus service design and operations</h2>
+        <div class="logos-row scroll-fade">
+            <img src="Logo_1.png" alt="Logo 1">
+            <img src="Logo_2.png" alt="Logo 2">
+            <img src="Logo_3.png" alt="Logo 3">
+            <img src="Logo_4.png" alt="Logo 4">
+        </div>
+    </div>
+
+    <!-- Ecosystem Section -->
+    <section class="ecosystem-section">
+        <canvas id="particles-canvas"></canvas>
+        <h2 class="ecosystem-heading scroll-fade">Pubbs Transit Product Ecosystem</h2>
+        <div class="ecosystem-cards">
+            <div class="eco-card scroll-fade" style="background-image: url('card_bg_1 (1).jpg')">
+                <span class="eco-card-label">Pubbs Transit</span>
+            </div>
+            <div class="eco-card scroll-fade" style="background-image: url('card_bg_2.jpg')">
+                <span class="eco-card-label">Pubbs Driver App</span>
+            </div>
+            <div class="eco-card scroll-fade" style="background-image: url('card_bg_3.jpg')">
+                <span class="eco-card-label">Pubbs User App</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Tabs Section -->
+    <section class="features-section">
+        <!-- Morphing background SVG (Rectangle 89/90/91) -->
+        <svg class="features-bg-svg scroll-fade" viewBox="0 0 1920 900" preserveAspectRatio="none" aria-hidden="true">
+            <defs>
+                <linearGradient id="bgGrad" gradientUnits="userSpaceOnUse"
+                    x1="1233.5" y1="800" x2="1149.5" y2="231">
+                    <stop offset="0" stop-color="#1C7BF6"/>
+                    <stop offset="1" stop-color="#AC1DFF"/>
+                </linearGradient>
+                <pattern id="bgDots" patternUnits="userSpaceOnUse"
+                    patternTransform="matrix(16.6474 0 0 33.2948 957.47 447.47)"
+                    viewBox="0 0 36.19 72.38" width="1" height="1">
+                    <g id="bgDotsInner">
+                        <rect width="11" height="11" fill="#68AAFF"/>
+                    </g>
+                    <use href="#bgDotsInner" transform="translate(-36.19 0)"/>
+                    <use href="#bgDotsInner" transform="translate(-18.095 36.19)"/>
+                    <use href="#bgDotsInner" transform="translate(18.095 36.19)"/>
+                </pattern>
+            </defs>
+            <path id="bgMorphPath" fill="url(#bgGrad)" d=""/>
+            <path id="bgMorphPattern" fill="url(#bgDots)" fill-opacity="0.2" d=""/>
+        </svg>
+
+        <h2 class="features-heading scroll-fade">Explore Pubbs Transit Features</h2>
+
+        <div class="features-card scroll-fade">
+            <div class="features-tabs" role="tablist">
+                <button type="button" class="features-tab active" data-tab="0" role="tab" aria-selected="true">
+                    <svg class="tab-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 22V17C11 16.0667 10.8583 15.375 10.575 14.925C10.2917 14.475 9.91667 14.0333 9.45 13.6L10.875 12.175C11.075 12.3583 11.2667 12.5542 11.45 12.7625C11.6333 12.9708 11.8167 13.1917 12 13.425C12.2333 13.1083 12.4708 12.8292 12.7125 12.5875C12.9542 12.3458 13.2 12.1083 13.45 11.875C14.0833 11.2917 14.6583 10.6167 15.175 9.85C15.6917 9.08333 15.9667 7.74167 16 5.825L14.425 7.4L13 6L17 2L21 6L19.6 7.4L18 5.825C17.9667 8.20833 17.6 9.90417 16.9 10.9125C16.2 11.9208 15.5 12.7417 14.8 13.375C14.2667 13.8583 13.8333 14.3292 13.5 14.7875C13.1667 15.2458 13 15.9833 13 17V22H11ZM6.2 8.175C6.13333 7.84167 6.0875 7.475 6.0625 7.075C6.0375 6.675 6.01667 6.25833 6 5.825L4.4 7.4L3 6L7 2L11 6L9.575 7.4L8 5.85C8 6.2 8.01667 6.52917 8.05 6.8375C8.08333 7.14583 8.11667 7.43333 8.15 7.7L6.2 8.175ZM8.35 12.575C8.01667 12.225 7.69583 11.8167 7.3875 11.35C7.07917 10.8833 6.80833 10.3083 6.575 9.625L8.5 9.15C8.66667 9.6 8.85833 9.98333 9.075 10.3C9.29167 10.6167 9.525 10.9 9.775 11.15L8.35 12.575Z"/></svg>
+                    <span class="tab-icon-label">Route Creation</span>
+                    <span class="tab-indicator"></span>
+                </button>
+                <button type="button" class="features-tab" data-tab="1" role="tab" aria-selected="false">
+                    <svg class="tab-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21C9.48333 21 7.35417 20.6125 5.6125 19.8375C3.87083 19.0625 3 18.1167 3 17V7C3 5.9 3.87917 4.95833 5.6375 4.175C7.39583 3.39167 9.51667 3 12 3C14.4833 3 16.6042 3.39167 18.3625 4.175C20.1208 4.95833 21 5.9 21 7V17C21 18.1167 20.1292 19.0625 18.3875 19.8375C16.6458 20.6125 14.5167 21 12 21ZM12 9.025C13.4833 9.025 14.975 8.8125 16.475 8.3875C17.975 7.9625 18.8167 7.50833 19 7.025C18.8167 6.54167 17.9792 6.08333 16.4875 5.65C14.9958 5.21667 13.5 5 12 5C10.4833 5 8.99583 5.2125 7.5375 5.6375C6.07917 6.0625 5.23333 6.525 5 7.025C5.23333 7.525 6.07917 7.98333 7.5375 8.4C8.99583 8.81667 10.4833 9.025 12 9.025ZM12 14C12.7 14 13.375 13.9667 14.025 13.9C14.675 13.8333 15.2958 13.7375 15.8875 13.6125C16.4792 13.4875 17.0375 13.3333 17.5625 13.15C18.0875 12.9667 18.5667 12.7583 19 12.525V9.525C18.5667 9.75833 18.0875 9.96667 17.5625 10.15C17.0375 10.3333 16.4792 10.4875 15.8875 10.6125C15.2958 10.7375 14.675 10.8333 14.025 10.9C13.375 10.9667 12.7 11 12 11C11.3 11 10.6167 10.9667 9.95 10.9C9.28333 10.8333 8.65417 10.7375 8.0625 10.6125C7.47083 10.4875 6.91667 10.3333 6.4 10.15C5.88333 9.96667 5.41667 9.75833 5 9.525V12.525C5.41667 12.7583 5.88333 12.9667 6.4 13.15C6.91667 13.3333 7.47083 13.4875 8.0625 13.6125C8.65417 13.7375 9.28333 13.8333 9.95 13.9C10.6167 13.9667 11.3 14 12 14ZM12 19C12.7667 19 13.5458 18.9417 14.3375 18.825C15.1292 18.7083 15.8583 18.5542 16.525 18.3625C17.1917 18.1708 17.75 17.9542 18.2 17.7125C18.65 17.4708 18.9167 17.225 19 16.975V14.525C18.5667 14.7583 18.0875 14.9667 17.5625 15.15C17.0375 15.3333 16.4792 15.4875 15.8875 15.6125C15.2958 15.7375 14.675 15.8333 14.025 15.9C13.375 15.9667 12.7 16 12 16C11.3 16 10.6167 15.9667 9.95 15.9C9.28333 15.8333 8.65417 15.7375 8.0625 15.6125C7.47083 15.4875 6.91667 15.3333 6.4 15.15C5.88333 14.9667 5.41667 14.7583 5 14.525V17C5.08333 17.25 5.34583 17.4917 5.7875 17.725C6.22917 17.9583 6.78333 18.1708 7.45 18.3625C8.11667 18.5542 8.85 18.7083 9.65 18.825C10.45 18.9417 11.2333 19 12 19Z"/></svg>
+                    <span class="tab-icon-label">Data Management</span>
+                    <span class="tab-indicator"></span>
+                </button>
+                <button type="button" class="features-tab" data-tab="2" role="tab" aria-selected="false">
+                    <svg class="tab-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20V13H3V11H9V13H7V20H5ZM5 9V4H7V9H5ZM9 9V7H11V4H13V7H15V9H9ZM11 20V11H13V20H11ZM17 20V17H15V15H21V17H19V20H17ZM17 13V4H19V13H17Z"/></svg>
+                    <span class="tab-icon-label">Frequency Optimization</span>
+                    <span class="tab-indicator"></span>
+                </button>
+            </div>
+
+            <!-- Panel 1: Route Creation -->
+            <div class="features-panel active" data-panel="0">
+                <div class="features-left">
+                    <h3 class="features-title">Smarter Route Planning Flow</h3>
+                    <div class="features-list">
+                        <div class="feature-item">
+                            <div class="feature-head">
+                                <span class="feature-check"><svg viewBox="0 0 24 24"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>
+                                <span class="feature-title">Network Control</span>
+                            </div>
+                            <p class="feature-desc">Build, organize, and refine routes with mapped stops and structured planning tools that reduce confusion across operational teams.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-head">
+                                <span class="feature-check"><svg viewBox="0 0 24 24"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>
+                                <span class="feature-title">Route Operations</span>
+                            </div>
+                            <p class="feature-desc">Update, expand, or retire routes seamlessly while keeping planning, dispatch, and field teams aligned through centralized route visibility.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-head">
+                                <span class="feature-check"><svg viewBox="0 0 24 24"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>
+                                <span class="feature-title">Planning Standards</span>
+                            </div>
+                            <p class="feature-desc">Define service assumptions and operating parameters clearly so scheduling decisions remain consistent, accurate, and operationally practical across routes.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="features-right">
+                    <img class="visual visual-img" src="tab_1.png" alt="Route creation preview">
+                </div>
+            </div>
+
+            <!-- Panel 2: Data Management -->
+            <div class="features-panel" data-panel="1">
+                <div class="features-left">
+                    <h3 class="features-title">Reliable Operations Data Foundation</h3>
+                    <div class="features-list">
+                        <div class="feature-item">
+                            <div class="feature-head">
+                                <span class="feature-check"><svg viewBox="0 0 24 24"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>
+                                <span class="feature-title">Structured Planning Inputs</span>
+                            </div>
+                            <p class="feature-desc">Centralize operational datasets, planning assumptions, and service constraints within organized workspaces that improve consistency across everyday planning activities.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-head">
+                                <span class="feature-check"><svg viewBox="0 0 24 24"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>
+                                <span class="feature-title">Data Quality Visibility</span>
+                            </div>
+                            <p class="feature-desc">Track missing planning inputs through clear completion indicators that reduce operational mistakes and improve accountability between internal planning teams.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-head">
+                                <span class="feature-check"><svg viewBox="0 0 24 24"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>
+                                <span class="feature-title">Historical Data Versioning</span>
+                            </div>
+                            <p class="feature-desc">Manage dated planning datasets safely while preserving historical records, enabling controlled updates for seasonal or evolving operational service changes.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="features-right">
+                    <img class="visual visual-img" src="tab_2.png" alt="Data management preview">
+                </div>
+            </div>
+
+            <!-- Panel 3: Frequency Optimization -->
+            <div class="features-panel" data-panel="2">
+                <div class="features-left">
+                    <h3 class="features-title">Intelligent Frequency Planning System</h3>
+                    <div class="features-list">
+                        <div class="feature-item">
+                            <div class="feature-head">
+                                <span class="feature-check"><svg viewBox="0 0 24 24"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>
+                                <span class="feature-title">Baseline Service Planning</span>
+                            </div>
+                            <p class="feature-desc">Create 1st-pass frequency plans quickly with structured outputs that improve consistency and speed up timetable planning across operational service corridors.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-head">
+                                <span class="feature-check"><svg viewBox="0 0 24 24"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>
+                                <span class="feature-title">Optimization Scenario Comparison</span>
+                            </div>
+                            <p class="feature-desc">Compare multiple frequency strategies using cost, reliability, and passenger impact insights before selecting operationally balanced service deployment decisions.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-head">
+                                <span class="feature-check"><svg viewBox="0 0 24 24"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>
+                                <span class="feature-title">Reusable Frequency Configurations</span>
+                            </div>
+                            <p class="feature-desc">Store and reactivate approved service plans efficiently, enabling faster seasonal planning cycles with reduced repetitive operational planning effort.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="features-right">
+                    <img class="visual visual-img" src="tab_3.png" alt="Frequency optimization preview">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bus Background Section -->
+    <section class="bus-background-section">
+        <img src="bus background.png" alt="Bus Background" class="bus-background-img">
+
+        <div class="bus-bg-container-wrapper">
+            <div class="bus-bg-container scroll-fade">
+                <div class="bus-bg-text-row scroll-fade">
+                    <div class="bus-bg-text-item">Minimizing total daily<br>operator cost by</div>
+                    <div class="bus-bg-text-item">Lowering operator cost by<br>due to vehicle utilization</div>
+                </div>
+
+                <div class="bus-bg-numbers-row">
+                    <div class="bus-bg-number-item scroll-fade">~17%</div>
+                    <div class="bus-bg-number-item scroll-fade">~11%</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.scroll-fade').forEach(el => observer.observe(el));
+
+        // ── Particles ──
+        (function () {
+            const canvas = document.getElementById('particles-canvas');
+            const ctx = canvas.getContext('2d');
+            const section = document.querySelector('.ecosystem-section');
+
+            const QUANTITY   = 100;
+            const STATICITY  = 50;
+            const EASE       = 50;
+            const BASE_SIZE  = 0.4;
+            const COLOR      = '#ffffff';
+            const VX = 0, VY = 0;
+            const dpr = window.devicePixelRatio || 1;
+
+            let canvasW = 0, canvasH = 0;
+            let circles = [];
+            const mouse = { x: 0, y: 0 };
+            let rafID = null;
+
+            function hexToRgb(hex) {
+                hex = hex.replace('#', '');
+                if (hex.length === 3) hex = hex.split('').map(c => c + c).join('');
+                const v = parseInt(hex, 16);
+                return [(v >> 16) & 255, (v >> 8) & 255, v & 255];
+            }
+
+            const rgb = hexToRgb(COLOR);
+
+            function circleParams() {
+                return {
+                    x: Math.floor(Math.random() * canvasW),
+                    y: Math.floor(Math.random() * canvasH),
+                    translateX: 0,
+                    translateY: 0,
+                    size: Math.floor(Math.random() * 2) + BASE_SIZE,
+                    alpha: 0,
+                    targetAlpha: parseFloat((Math.random() * 0.6 + 0.1).toFixed(1)),
+                    dx: (Math.random() - 0.5) * 0.1,
+                    dy: (Math.random() - 0.5) * 0.1,
+                    magnetism: 0.1 + Math.random() * 4
+                };
+            }
+
+            function drawCircle(c, update = false) {
+                ctx.translate(c.translateX, c.translateY);
+                ctx.beginPath();
+                ctx.arc(c.x, c.y, c.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, ${c.alpha})`;
+                ctx.fill();
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+                if (!update) circles.push(c);
+            }
+
+            function resizeCanvas() {
+                canvasW = section.offsetWidth;
+                canvasH = section.offsetHeight;
+                canvas.width  = canvasW * dpr;
+                canvas.height = canvasH * dpr;
+                canvas.style.width  = canvasW + 'px';
+                canvas.style.height = canvasH + 'px';
+                ctx.scale(dpr, dpr);
+                circles = [];
+                for (let i = 0; i < QUANTITY; i++) drawCircle(circleParams());
+            }
+
+            function remapValue(v, s1, e1, s2, e2) {
+                const r = ((v - s1) * (e2 - s2)) / (e1 - s1) + s2;
+                return r > 0 ? r : 0;
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvasW, canvasH);
+                circles.forEach((c, i) => {
+                    const edge = [
+                        c.x + c.translateX - c.size,
+                        canvasW - c.x - c.translateX - c.size,
+                        c.y + c.translateY - c.size,
+                        canvasH - c.y - c.translateY - c.size
+                    ];
+                    const closest = Math.min(...edge);
+                    const remap = parseFloat(remapValue(closest, 0, 20, 0, 1).toFixed(2));
+                    if (remap > 1) {
+                        c.alpha += 0.02;
+                        if (c.alpha > c.targetAlpha) c.alpha = c.targetAlpha;
+                    } else {
+                        c.alpha = c.targetAlpha * remap;
+                    }
+                    c.x += c.dx + VX;
+                    c.y += c.dy + VY;
+                    c.translateX += (mouse.x / (STATICITY / c.magnetism) - c.translateX) / EASE;
+                    c.translateY += (mouse.y / (STATICITY / c.magnetism) - c.translateY) / EASE;
+                    drawCircle(c, true);
+                    if (c.x < -c.size || c.x > canvasW + c.size ||
+                        c.y < -c.size || c.y > canvasH + c.size) {
+                        circles.splice(i, 1);
+                        drawCircle(circleParams());
+                    }
+                });
+                rafID = requestAnimationFrame(animate);
+            }
+
+            window.addEventListener('mousemove', (e) => {
+                const rect = canvas.getBoundingClientRect();
+                const x = e.clientX - rect.left - canvasW / 2;
+                const y = e.clientY - rect.top  - canvasH / 2;
+                if (x < canvasW / 2 && x > -canvasW / 2 &&
+                    y < canvasH / 2 && y > -canvasH / 2) {
+                    mouse.x = x;
+                    mouse.y = y;
+                }
+            });
+
+            let resizeTimer;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(resizeCanvas, 200);
+            });
+
+            resizeCanvas();
+            animate();
+        })();
+
+        // ── Features Tabs: SVG path morph + gradient tween ──
+        (function () {
+            // Real Rectangle 89/90/91 paths from Figma, all share M-C-V-C-V-Z structure (16 numbers each).
+            // Rectangle 91 has a viewBox height of 997 in the source; Y values are normalized to 900 (×0.90271).
+            const PATHS = [
+                // Tab 1 – Rectangle 89
+                'M0 233.5C781.628 357.331 1200.38 303.274 1920 0V900C1231.23 507.241 811.438 468.45 0 714.5V233.5Z',
+                // Tab 2 – Rectangle 90
+                'M0 233.5C782.198 419.606 1201 372.164 1920 0V900C1174.89 712.651 748.539 697.763 0 714.5V233.5Z',
+                // Tab 3 – Rectangle 91, rewritten in the same clockwise traversal as R89/R90 so
+                // each vertex maps to its R89/R90 counterpart (no flip / no rotation during morph).
+                'M0 374.17C719.002 710.04 1137.8 168 1920 0V734.81C1171.46 719.7 745.108 730.88 0 900V374.17Z'
+            ];
+            // Gradient stops [stop0, stop1] from source SVGs
+            const GRADIENTS = [
+                ['#1C7BF6', '#AC1DFF'],   // R89
+                ['#1C7BF6', '#1CF6B1'],   // R90
+                ['#D91CF6', '#F6891C']    // R91
+            ];
+            // Gradient line endpoints [x1,y1,x2,y2] in userSpace
+            const GRAD_LINES = [
+                [1233.5, 800, 1149.5, 231],
+                [1233.5, 800, 1149.5, 231],
+                [686.5, 899.5, 770.5, 330.5]
+            ];
+
+            const pathEl = document.getElementById('bgMorphPath');
+            const patternEl = document.getElementById('bgMorphPattern');
+            const gradEl = document.getElementById('bgGrad');
+            const gradStops = gradEl.querySelectorAll('stop');
+            pathEl.setAttribute('d', PATHS[0]);
+            patternEl.setAttribute('d', PATHS[0]);
+
+            // Parse a path's numeric values into an array; keep template for reconstruction.
+            function parsePath(d) {
+                const nums = [];
+                const template = d.replace(/-?\d+(\.\d+)?/g, (m) => {
+                    nums.push(parseFloat(m));
+                    return '\u0000';
+                });
+                return { nums, template };
+            }
+            function buildPath(template, nums) {
+                let i = 0;
+                return template.replace(/\u0000/g, () => {
+                    const v = nums[i++];
+                    return (Math.round(v * 100) / 100).toString();
+                });
+            }
+            const parsed = PATHS.map(parsePath);
+
+            function hexToRgb(h) {
+                h = h.replace('#', '');
+                if (h.length === 3) h = h.split('').map(c => c + c).join('');
+                const v = parseInt(h, 16);
+                return [(v >> 16) & 255, (v >> 8) & 255, v & 255];
+            }
+            function rgbToHex(r, g, b) {
+                return '#' + [r, g, b].map(n => Math.max(0, Math.min(255, Math.round(n))).toString(16).padStart(2, '0')).join('');
+            }
+            const GRADIENTS_RGB = GRADIENTS.map(([a, b]) => [hexToRgb(a), hexToRgb(b)]);
+
+            // Easing: cubic-bezier(0.4, 0, 0.2, 1) approximation
+            function easeInOut(t) {
+                return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+            }
+
+            let currentIndex = 0;
+            let fromIndex = 0;
+            let toIndex = 0;
+            let rafId = null;
+
+            function morphTo(targetIdx, duration = 600) {
+                if (rafId) cancelAnimationFrame(rafId);
+                fromIndex = currentIndex;
+                toIndex = targetIdx;
+                const fromNums = parsed[fromIndex].nums;
+                const toNums = parsed[toIndex].nums;
+                const template = parsed[toIndex].template;
+                const fromGrad = GRADIENTS_RGB[fromIndex];
+                const toGrad = GRADIENTS_RGB[toIndex];
+                const start = performance.now();
+
+                function tick(now) {
+                    const raw = Math.min(1, (now - start) / duration);
+                    const t = easeInOut(raw);
+                    const out = new Array(toNums.length);
+                    for (let i = 0; i < toNums.length; i++) {
+                        out[i] = fromNums[i] + (toNums[i] - fromNums[i]) * t;
+                    }
+                    const dStr = buildPath(template, out);
+                    pathEl.setAttribute('d', dStr);
+                    patternEl.setAttribute('d', dStr);
+                    // gradient color interpolation
+                    for (let s = 0; s < 2; s++) {
+                        const r = fromGrad[s][0] + (toGrad[s][0] - fromGrad[s][0]) * t;
+                        const g = fromGrad[s][1] + (toGrad[s][1] - fromGrad[s][1]) * t;
+                        const b = fromGrad[s][2] + (toGrad[s][2] - fromGrad[s][2]) * t;
+                        gradStops[s].setAttribute('stop-color', rgbToHex(r, g, b));
+                    }
+                    // gradient line endpoint interpolation
+                    const fl = GRAD_LINES[fromIndex];
+                    const tl = GRAD_LINES[toIndex];
+                    gradEl.setAttribute('x1', fl[0] + (tl[0] - fl[0]) * t);
+                    gradEl.setAttribute('y1', fl[1] + (tl[1] - fl[1]) * t);
+                    gradEl.setAttribute('x2', fl[2] + (tl[2] - fl[2]) * t);
+                    gradEl.setAttribute('y2', fl[3] + (tl[3] - fl[3]) * t);
+                    if (raw < 1) {
+                        rafId = requestAnimationFrame(tick);
+                    } else {
+                        currentIndex = toIndex;
+                        rafId = null;
+                    }
+                }
+                rafId = requestAnimationFrame(tick);
+            }
+
+            // Tab switching
+            const tabs = document.querySelectorAll('.features-tab');
+            const panels = document.querySelectorAll('.features-panel');
+
+            function activate(idx) {
+                tabs.forEach((t, i) => {
+                    const active = i === idx;
+                    t.classList.toggle('active', active);
+                    t.setAttribute('aria-selected', active ? 'true' : 'false');
+                });
+                panels.forEach((p, i) => {
+                    if (i === idx) {
+                        // force reflow to restart CSS animations
+                        p.classList.remove('active');
+                        void p.offsetWidth;
+                        p.classList.add('active');
+                    } else {
+                        p.classList.remove('active');
+                    }
+                });
+                morphTo(idx, 200);
+            }
+
+            tabs.forEach((tab, i) => {
+                // Prevent focus-triggered scroll on first click (browser may scroll the clicked
+                // tab into view if its containing card hasn't finished its scroll-fade transform).
+                tab.addEventListener('mousedown', (e) => e.preventDefault());
+                tab.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    // Snapshot scroll position and restore on next frame to neutralize any
+                    // browser-initiated scroll anchoring from the panel swap / focus.
+                    const sx = window.scrollX;
+                    const sy = window.scrollY;
+                    // If the section's scroll-fade elements haven't been marked visible yet
+                    // (user clicked before the IntersectionObserver triggered), force them now
+                    // so the card isn't mid-transform when the panel switches.
+                    document.querySelectorAll('.features-section .scroll-fade').forEach(el => {
+                        el.classList.add('visible');
+                    });
+                    activate(i);
+                    requestAnimationFrame(() => window.scrollTo(sx, sy));
+                });
+                tab.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowRight') activate((i + 1) % tabs.length);
+                    if (e.key === 'ArrowLeft') activate((i - 1 + tabs.length) % tabs.length);
+                });
+            });
+        })();
+
+        // ── Hero Image Scroll Animation ──
+        (function () {
+            const heroImageWrap = document.querySelector('.hero-image-wrap');
+            const heroImageImg = document.querySelector('.hero-image-wrap img');
+
+            if (!heroImageWrap || !heroImageImg) return;
+
+            function updateScrollAnimation() {
+                const rect = heroImageWrap.getBoundingClientRect();
+                const viewportHeight = window.innerHeight;
+
+                // Calculate scroll progress: 0 when image is at bottom of viewport, 1 when at top
+                const distanceFromBottom = rect.bottom;
+                const totalDistance = viewportHeight + rect.height;
+                let scrollProgress = 1 - (distanceFromBottom / totalDistance);
+
+                // Clamp between 0 and 1
+                scrollProgress = Math.max(0, Math.min(1, scrollProgress));
+
+                // Adjust animation speed (increase value for faster animation)
+                const speedMultiplier = 3.5;
+                const adjustedProgress = Math.min(1, scrollProgress * speedMultiplier);
+
+                // Mobile detection
+                const isMobile = window.innerWidth <= 768;
+
+                // Calculate transformations based on scroll progress
+                const startRotate = 20;
+                const endRotate = 0;
+                const rotate = startRotate + (endRotate - startRotate) * adjustedProgress;
+
+                const [scaleStart, scaleEnd] = isMobile ? [0.7, 0.9] : [1.05, 1];
+                const scale = scaleStart + (scaleEnd - scaleStart) * adjustedProgress;
+
+                const translate = -100 * adjustedProgress;
+
+                // Apply transforms
+                heroImageImg.style.transform = `
+                    rotateX(${rotate}deg)
+                    scale(${scale})
+                    translateY(${translate}px)
+                `;
+            }
+
+            window.addEventListener('scroll', updateScrollAnimation, { passive: true });
+            window.addEventListener('resize', updateScrollAnimation);
+
+            // Initial call
+            updateScrollAnimation();
+        })();
+    </script>
+
+</body>
+</html>
