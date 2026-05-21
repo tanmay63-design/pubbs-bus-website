@@ -396,7 +396,7 @@
         .features-section {
             position: relative;
             width: 100%;
-            padding: 180px 0 220px;
+            padding: 220px 0 120px;
             background: #FFFFFF;
             display: flex;
             flex-direction: column;
@@ -818,11 +818,15 @@
             object-fit: cover;
         }
 
-        .bus-bg-container-wrapper {
+        .bus-bg-transit-overlay {
             position: absolute;
             top: 250px;
-            left: 50%;
-            transform: translateX(-50%);
+            left: 0;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 80px;
             z-index: 1;
         }
 
@@ -976,7 +980,7 @@
             position: relative;
             width: 100%;
             padding: 250px 0;
-            background: #FFFFFF;
+            background: linear-gradient(to bottom, #252C35, #051831);
             overflow: hidden;
             display: flex;
             flex-direction: column;
@@ -990,7 +994,7 @@
             width: 100%;
             height: 100%;
             z-index: 0;
-            opacity: 0.7;
+            opacity: 0.2;
             pointer-events: none;
         }
 
@@ -1352,28 +1356,10 @@
     <section class="bus-background-section">
         <img src="bus background.png" alt="Bus Background" class="bus-background-img">
 
-        <div class="bus-bg-container-wrapper">
-            <div class="bus-bg-container scroll-fade">
-                <div class="bus-bg-text-row scroll-fade">
-                    <div class="bus-bg-text-item">Minimizing total daily<br>operator cost by</div>
-                    <div class="bus-bg-text-item">Lowering operator cost by<br>due to vehicle utilization</div>
-                </div>
+        <div class="bus-bg-transit-overlay">
+            <h2 class="transit-role-heading scroll-fade">One Platform for Every Transit Role</h2>
 
-                <div class="bus-bg-numbers-row">
-                    <div class="bus-bg-number-item scroll-fade">~17%</div>
-                    <div class="bus-bg-number-item scroll-fade">~11%</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Transit Role Section -->
-    <section class="transit-role-section">
-        <canvas id="flickering-grid-canvas"></canvas>
-
-        <h2 class="transit-role-heading scroll-fade">One Platform for Every Transit Role</h2>
-
-        <div class="marquee-wrapper scroll-fade">
+            <div class="marquee-wrapper scroll-fade">
             <div class="marquee-track">
                 <!-- Card 1: Control Room Staff -->
                 <div class="transit-card">
@@ -1504,6 +1490,12 @@
                 </div>
             </div>
         </div>
+        </div>
+    </section>
+
+    <!-- Blank Section -->
+    <section class="transit-role-section">
+        <canvas id="flickering-grid-canvas"></canvas>
     </section>
 
     <script>
@@ -1810,11 +1802,11 @@
             const canvas = document.getElementById('flickering-grid-canvas');
             if (!canvas) return;
             const ctx = canvas.getContext('2d');
-            const section = document.querySelector('.transit-role-section');
+            const section = canvas.closest('section');
 
             const SQUARE_SIZE = 4;
             const GRID_GAP = 6;
-            const COLOR = '#6B7280';
+            const COLOR = '#ffffff';
             const MAX_OPACITY = 0.5;
             const FLICKER_CHANCE = 0.1;
             const STEP = SQUARE_SIZE + GRID_GAP;
