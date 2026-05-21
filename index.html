@@ -971,6 +971,172 @@
             transition-delay: 0.5s;
         }
 
+        /* ──────────── Transit Role Section ──────────── */
+        .transit-role-section {
+            position: relative;
+            width: 100%;
+            padding: 250px 0;
+            background: #FFFFFF;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 80px;
+        }
+
+        #flickering-grid-canvas {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        .transit-role-heading {
+            position: relative;
+            z-index: 1;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 36px;
+            line-height: 44px;
+            letter-spacing: -0.02em;
+            color: #000000;
+            text-align: center;
+            padding: 0 24px;
+        }
+
+        .transit-role-section .marquee-wrapper.scroll-fade {
+            transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition-delay: 0.25s;
+        }
+
+        .marquee-wrapper {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            overflow: hidden;
+            padding: 20px 0;
+            will-change: opacity, transform;
+            backface-visibility: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .marquee-track {
+            display: flex;
+            flex-direction: row;
+            gap: 84px;
+            width: max-content;
+            animation: marqueeScroll 35s linear infinite;
+            padding: 0 42px;
+        }
+
+        .marquee-wrapper:hover .marquee-track {
+            animation-play-state: paused;
+        }
+
+        @keyframes marqueeScroll {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Card */
+        .transit-card {
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 24px;
+            gap: 36px;
+            width: 686px;
+            height: 430px;
+            background: #FFFFFF;
+            border: 2px solid #EAF3FF;
+            box-shadow: 0px 0px 40.2px rgba(163, 163, 163, 0.12);
+            border-radius: 12px;
+            flex-shrink: 0;
+        }
+
+        .transit-card-image {
+            width: 280px;
+            height: 382px;
+            border-radius: 12px;
+            flex-shrink: 0;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .transit-card-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 0px;
+            gap: 24px;
+            width: 334px;
+        }
+
+        .transit-card-title {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 24px;
+            line-height: 100%;
+            letter-spacing: -0.02em;
+            color: #4C5663;
+            align-self: stretch;
+        }
+
+        .transit-card-desc {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 156%;
+            letter-spacing: -0.02em;
+            color: #4C5663;
+            align-self: stretch;
+        }
+
+        .transit-card-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            align-self: stretch;
+        }
+
+        .transit-card-list li {
+            font-family: 'Inter';
+            font-weight: 400;
+            font-size: 15px;
+            line-height: 156%;
+            letter-spacing: -0.02em;
+            color: #4C5663;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .transit-card-list li::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #1C7BF6;
+            flex-shrink: 0;
+            margin-top: 9px;
+        }
+
+        @media (max-width: 768px) {
+            .transit-role-section { padding: 120px 0; gap: 48px; }
+            .transit-card { width: 480px; height: auto; flex-direction: column; }
+            .transit-card-image { width: 100%; height: 200px; }
+            .transit-card-content { width: 100%; }
+        }
+
     </style>
 </head>
 <body>
@@ -1196,6 +1362,145 @@
                 <div class="bus-bg-numbers-row">
                     <div class="bus-bg-number-item scroll-fade">~17%</div>
                     <div class="bus-bg-number-item scroll-fade">~11%</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Transit Role Section -->
+    <section class="transit-role-section">
+        <canvas id="flickering-grid-canvas"></canvas>
+
+        <h2 class="transit-role-heading scroll-fade">One Platform for Every Transit Role</h2>
+
+        <div class="marquee-wrapper scroll-fade">
+            <div class="marquee-track">
+                <!-- Card 1: Control Room Staff -->
+                <div class="transit-card">
+                    <div class="transit-card-image" style="background-image: url('role_1.png');"></div>
+                    <div class="transit-card-content">
+                        <div class="transit-card-title">Control Room Staff</div>
+                        <div class="transit-card-desc">Track live operations, manage disruptions, monitor safety alerts, and coordinate rapid service recovery decisions across the transit network.</div>
+                        <ul class="transit-card-list">
+                            <li>Monitor routes, buses, and operational movement live</li>
+                            <li>Respond instantly to alerts and distress activities</li>
+                            <li>Trigger rescheduling workflows during operational disruptions</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Card 2: Bus Drivers -->
+                <div class="transit-card">
+                    <div class="transit-card-image" style="background-image: url('role_2.png');"></div>
+                    <div class="transit-card-content">
+                        <div class="transit-card-title">Bus Drivers</div>
+                        <div class="transit-card-desc">Access assigned duties, receive live operational guidance, and manage trips confidently while staying connected with central control teams.</div>
+                        <ul class="transit-card-list">
+                            <li>View assigned trips and shift responsibilities clearly</li>
+                            <li>Follow live guidance during active route operations</li>
+                            <li>Receive alerts and coordinated holding instructions promptly</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Card 3: Depot Managers -->
+                <div class="transit-card">
+                    <div class="transit-card-image" style="background-image: url('role_3.png');"></div>
+                    <div class="transit-card-content">
+                        <div class="transit-card-title">Depot Managers</div>
+                        <div class="transit-card-desc">Manage fleet readiness, depot coordination, staffing visibility, and charging operations while maintaining uninterrupted daily transit service across all schedules.</div>
+                        <ul class="transit-card-list">
+                            <li>Monitor fleet allocation and depot service readiness</li>
+                            <li>Coordinate crew availability, shifts, and operational coverage</li>
+                            <li>Track charging plans and electric fleet performance</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Card 4: Service Designers -->
+                <div class="transit-card">
+                    <div class="transit-card-image" style="background-image: url('role_4.png');"></div>
+                    <div class="transit-card-content">
+                        <div class="transit-card-title">Service Designers</div>
+                        <div class="transit-card-desc">Design efficient transit networks, optimize service frequencies, and create reliable schedules using operational data and passenger demand insights.</div>
+                        <ul class="transit-card-list">
+                            <li>Build routes, stops, and timetable structures efficiently</li>
+                            <li>Compare optimization scenarios for balanced service planning</li>
+                            <li>Forecast passenger demand and travel-time variations accurately</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Card 5: Route Dispatchers -->
+                <div class="transit-card">
+                    <div class="transit-card-image" style="background-image: url('role_5.png');"></div>
+                    <div class="transit-card-content">
+                        <div class="transit-card-title">Route Dispatchers</div>
+                        <div class="transit-card-desc">Assign buses quickly, monitor dispatch coverage, and respond to breakdowns while ensuring routes operate smoothly throughout the day.</div>
+                        <ul class="transit-card-list">
+                            <li>Allocate buses across routes, depots, and shifts</li>
+                            <li>Monitor dispatch gaps and assignment completion statuses</li>
+                            <li>Handle breakdown recovery and trip reassignment workflows</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Duplicate set for seamless loop -->
+                <div class="transit-card">
+                    <div class="transit-card-image" style="background-image: url('role_1.png');"></div>
+                    <div class="transit-card-content">
+                        <div class="transit-card-title">Control Room Staff</div>
+                        <div class="transit-card-desc">Track live operations, manage disruptions, monitor safety alerts, and coordinate rapid service recovery decisions across the transit network.</div>
+                        <ul class="transit-card-list">
+                            <li>Monitor routes, buses, and operational movement live</li>
+                            <li>Respond instantly to alerts and distress activities</li>
+                            <li>Trigger rescheduling workflows during operational disruptions</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="transit-card">
+                    <div class="transit-card-image" style="background-image: url('role_2.png');"></div>
+                    <div class="transit-card-content">
+                        <div class="transit-card-title">Bus Drivers</div>
+                        <div class="transit-card-desc">Access assigned duties, receive live operational guidance, and manage trips confidently while staying connected with central control teams.</div>
+                        <ul class="transit-card-list">
+                            <li>View assigned trips and shift responsibilities clearly</li>
+                            <li>Follow live guidance during active route operations</li>
+                            <li>Receive alerts and coordinated holding instructions promptly</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="transit-card">
+                    <div class="transit-card-image" style="background-image: url('role_3.png');"></div>
+                    <div class="transit-card-content">
+                        <div class="transit-card-title">Depot Managers</div>
+                        <div class="transit-card-desc">Manage fleet readiness, depot coordination, staffing visibility, and charging operations while maintaining uninterrupted daily transit service across all schedules.</div>
+                        <ul class="transit-card-list">
+                            <li>Monitor fleet allocation and depot service readiness</li>
+                            <li>Coordinate crew availability, shifts, and operational coverage</li>
+                            <li>Track charging plans and electric fleet performance</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="transit-card">
+                    <div class="transit-card-image" style="background-image: url('role_4.png');"></div>
+                    <div class="transit-card-content">
+                        <div class="transit-card-title">Service Designers</div>
+                        <div class="transit-card-desc">Design efficient transit networks, optimize service frequencies, and create reliable schedules using operational data and passenger demand insights.</div>
+                        <ul class="transit-card-list">
+                            <li>Build routes, stops, and timetable structures efficiently</li>
+                            <li>Compare optimization scenarios for balanced service planning</li>
+                            <li>Forecast passenger demand and travel-time variations accurately</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="transit-card">
+                    <div class="transit-card-image" style="background-image: url('role_5.png');"></div>
+                    <div class="transit-card-content">
+                        <div class="transit-card-title">Route Dispatchers</div>
+                        <div class="transit-card-desc">Assign buses quickly, monitor dispatch coverage, and respond to breakdowns while ensuring routes operate smoothly throughout the day.</div>
+                        <ul class="transit-card-list">
+                            <li>Allocate buses across routes, depots, and shifts</li>
+                            <li>Monitor dispatch gaps and assignment completion statuses</li>
+                            <li>Handle breakdown recovery and trip reassignment workflows</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1498,6 +1803,68 @@
                     if (e.key === 'ArrowLeft') activate((i - 1 + tabs.length) % tabs.length);
                 });
             });
+        })();
+
+        // ── Flickering Grid ──
+        (function () {
+            const canvas = document.getElementById('flickering-grid-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const section = document.querySelector('.transit-role-section');
+
+            const SQUARE_SIZE = 4;
+            const GRID_GAP = 6;
+            const COLOR = '#6B7280';
+            const MAX_OPACITY = 0.5;
+            const FLICKER_CHANCE = 0.1;
+            const STEP = SQUARE_SIZE + GRID_GAP;
+
+            let squares = [];
+
+            function hexToRgb(hex) {
+                hex = hex.replace('#', '');
+                const v = parseInt(hex, 16);
+                return [(v >> 16) & 255, (v >> 8) & 255, v & 255];
+            }
+            const rgb = hexToRgb(COLOR);
+
+            function resizeCanvas() {
+                canvas.width = section.offsetWidth;
+                canvas.height = section.offsetHeight;
+                squares = [];
+                const cols = Math.ceil(canvas.width / STEP) + 1;
+                const rows = Math.ceil(canvas.height / STEP) + 1;
+                for (let r = 0; r < rows; r++) {
+                    for (let c = 0; c < cols; c++) {
+                        squares.push({
+                            x: c * STEP,
+                            y: r * STEP,
+                            opacity: Math.random() * MAX_OPACITY
+                        });
+                    }
+                }
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                squares.forEach(sq => {
+                    if (Math.random() < FLICKER_CHANCE) {
+                        sq.opacity = Math.random() * MAX_OPACITY;
+                    }
+                    ctx.fillStyle = `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, ${sq.opacity})`;
+                    ctx.fillRect(sq.x, sq.y, SQUARE_SIZE, SQUARE_SIZE);
+                });
+                requestAnimationFrame(animate);
+            }
+
+            let resizeTimer;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(resizeCanvas, 200);
+            });
+
+            resizeCanvas();
+            animate();
         })();
 
         // ── Hero Image Scroll Animation ──
