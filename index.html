@@ -182,20 +182,30 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 48px;
+            gap: 64px;
         }
 
         .next-section-heading {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
             font-size: 28px;
-            font-weight: 700;
-            color: #0f172a;
+            line-height: 149%;
             text-align: center;
-            white-space: nowrap;
-            line-height: 1.3;
+            letter-spacing: -0.03em;
+            color: #525252;
+            max-width: 950px;
+            width: 100%;
+            padding: 0 24px;
         }
 
-        .next-section-heading span {
-            color: #1C7BF6;
+        .next-section-heading .heading-bold {
+            font-weight: 600;
+            color: #000000;
+        }
+
+        .next-section-heading .split-char {
+            display: inline-block;
+            will-change: transform, opacity;
         }
 
         .logos-row {
@@ -207,8 +217,8 @@
         }
 
         .logos-row img {
-            height: 56px;
-            width: auto;
+            height: 108px;
+            width: 108px;
             object-fit: contain;
             filter: grayscale(20%);
             transition: filter 0.2s ease;
@@ -262,7 +272,7 @@
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border-radius: 999px;
-            font-size: 13px;
+            font-size: 20px;
             font-weight: 500;
             color: #ffffff;
             letter-spacing: 0.3px;
@@ -410,6 +420,7 @@
             position: absolute;
             left: 0;
             right: 0;
+            display: none;
             top: 220px;
             width: 100%;
             height: 900px;
@@ -463,7 +474,7 @@
             position: relative;
             font-family: 'Inter', sans-serif;
             font-weight: 500;
-            font-size: 24px;
+            font-size: 20px;
             line-height: 29px;
             letter-spacing: -0.02em;
             color: #9E9E9E;
@@ -979,7 +990,7 @@
         .transit-role-section {
             position: relative;
             width: 100%;
-            padding: 250px 0;
+            padding: 95px 0;
             background: linear-gradient(to bottom, #252C35, #051831);
             overflow: hidden;
             display: flex;
@@ -995,6 +1006,16 @@
             height: 100%;
             z-index: 0;
             opacity: 0.2;
+            pointer-events: none;
+        }
+
+        #features-flickering-grid {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.15;
             pointer-events: none;
         }
 
@@ -1141,6 +1162,554 @@
             .transit-card-content { width: 100%; }
         }
 
+        /* ──────────── Dark Features Section ──────────── */
+        .dark-features-section {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            padding: 120px 0 120px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 80px;
+        }
+
+        .dark-features-heading {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 36px;
+            line-height: 44px;
+            letter-spacing: -0.02em;
+            color: #FFFFFF;
+            text-align: center;
+            padding: 0 24px;
+        }
+
+        .dark-features-card {
+            width: 1350px;
+            max-width: calc(100% - 48px);
+            background: #061831;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .dark-features-tabs {
+            display: flex;
+            width: 100%;
+            height: 77px;
+        }
+
+        .dark-features-tab {
+            flex: 1 1 0;
+            height: 77px;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            padding: 24px;
+            background: transparent;
+            border: 1px solid #032D63;
+            border-bottom: none;
+            cursor: pointer;
+            position: relative;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 24px;
+            letter-spacing: -0.02em;
+            color: #6889B3;
+            transition: color 0.25s ease;
+            user-select: none;
+        }
+
+        .dark-features-tab:first-child { border-radius: 12px 0 0 0; }
+        .dark-features-tab:last-child  { border-radius: 0 12px 0 0; }
+        .dark-features-tab + .dark-features-tab { border-left: none; }
+
+        .dark-features-tab .dark-tab-icon {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+            fill: #6889B3;
+            transition: fill 0.25s ease;
+        }
+
+        .dark-features-tab .dark-tab-indicator {
+            position: absolute;
+            left: 0; bottom: 0;
+            height: 3px; width: 100%;
+            background: #1C7BF6;
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .dark-features-tab.active {
+            color: #FFFFFF;
+        }
+
+        .dark-features-tab.active .dark-tab-icon { fill: #1C7BF6; }
+        .dark-features-tab.active .dark-tab-indicator { transform: scaleX(1); }
+
+        .dark-features-panel {
+            box-sizing: border-box;
+            display: none;
+            flex-direction: row;
+            align-items: center;
+            gap: 96px;
+            padding: 72px 48px 48px;
+            background: linear-gradient(180deg, #042045 0%, #000C1C 97.75%);
+            border: 1px solid #032D63;
+            border-top: none;
+            border-radius: 0 0 12px 12px;
+        }
+
+        .dark-features-panel.active { display: flex; }
+
+        .dark-features-left {
+            flex: 1 1 0;
+            display: flex;
+            flex-direction: column;
+            gap: 36px;
+            min-width: 0;
+        }
+
+        .dark-features-title {
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 28px;
+            line-height: 133%;
+            letter-spacing: -0.02em;
+            color: #EBEBEB;
+        }
+
+        .dark-features-list {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .dark-feature-item {
+            box-sizing: border-box;
+            padding: 24px;
+            gap: 16px;
+            display: flex;
+            flex-direction: column;
+            background: rgba(0, 34, 78, 0.5);
+            border: 2px solid #032d6366;
+            border-radius: 12px;
+        }
+
+        .dark-feature-head {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .dark-feature-check {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #4ABC51;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .dark-feature-check svg { width: 12px; height: 12px; fill: #fff; }
+
+        .dark-feature-title {
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 100%;
+            letter-spacing: -0.02em;
+            color: #FFFFFF;
+        }
+
+        .dark-feature-desc {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 156%;
+            letter-spacing: -0.02em;
+            color: #BCCBDF;
+        }
+
+        .dark-features-right {
+            flex: 1 1 0;
+            min-width: 0;
+            align-self: stretch;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 24px;
+            overflow: hidden;
+        }
+
+        .dark-features-right img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 24px;
+            display: block;
+        }
+
+        /* Dark panel fade-up on switch */
+        .dark-features-panel.active .dark-features-title,
+        .dark-features-panel.active .dark-feature-item,
+        .dark-features-panel.active .dark-features-right {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.6s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+        }
+        .dark-features-panel.active .dark-features-title   { animation-delay: 0.05s; }
+        .dark-features-panel.active .dark-feature-item:nth-child(1) { animation-delay: 0.15s; }
+        .dark-features-panel.active .dark-feature-item:nth-child(2) { animation-delay: 0.28s; }
+        .dark-features-panel.active .dark-feature-item:nth-child(3) { animation-delay: 0.41s; }
+        .dark-features-panel.active .dark-features-right   { animation-delay: 0.20s; }
+
+        /* ──────────── Live Tracking Section ──────────── */
+        .live-tracking-wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 180px 48px;
+            gap: 10px;
+            position: relative;
+            width: 100%;
+            background: linear-gradient(180deg, #FFFFFF 0%, #E3EFFF 100%);
+        }
+
+        .live-tracking-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0px;
+            gap: 64px;
+            width: 100%;
+            max-width: 1374px;
+            margin: 0 auto;
+        }
+
+        .live-tracking-title {
+            width: 100%;
+            max-width: 604px;
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 36px;
+            line-height: 44px;
+            letter-spacing: -0.01em;
+            background: linear-gradient(180deg, #072955 0%, #114487 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+        }
+
+        .live-tracking-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 0px;
+            width: 100%;
+            gap: 40px;
+        }
+
+        .live-tracking-images {
+            position: relative;
+            width: 100%;
+            max-width: 1374px;
+            height: 659px;
+            border-radius: 24.72px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0px 143px 0px 88px;
+            gap: 10px;
+            background: url(Frame\ 823.png);
+            background-size: cover;
+            background-position: center;
+            flex: none;
+            order: 0;
+            flex-grow: 0;
+        }
+
+        .live-tracking-images-group {
+            width: 1143px;
+            height: 659px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0px;
+            flex: none;
+            order: 0;
+            flex-grow: 1;
+        }
+
+        .live-tracking-frame-822 {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            padding: 0px;
+            gap: 10px;
+            width: 1143px;
+            height: 409px;
+            margin: 0px 0px -269px 0px;
+            flex: none;
+            order: 0;
+            align-self: stretch;
+            flex-grow: 0;
+        }
+
+        .live-tracking-image-91 {
+            width: 824px;
+            height: 409px;
+            border-radius: 12px;
+            object-fit: cover;
+            flex: none;
+            order: 0;
+            flex-grow: 0;
+            transition-delay: 0s;
+        }
+
+        .live-tracking-image-91.scroll-fade.visible {
+            transition-delay: 0.1s;
+        }
+
+        .live-tracking-frame-821 {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 0px;
+            gap: 10px;
+            width: 1143px;
+            height: 339px;
+            flex: none;
+            order: 1;
+            align-self: stretch;
+            flex-grow: 0;
+        }
+
+        .live-tracking-image-93 {
+            width: 594px;
+            height: 339px;
+            border-radius: 12px;
+            object-fit: cover;
+            flex: none;
+            order: 0;
+            flex-grow: 0;
+            transition-delay: 0s;
+        }
+
+        .live-tracking-image-93.scroll-fade.visible {
+            transition-delay: 0.25s;
+        }
+
+        .live-tracking-cards {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 24px 0px 0px;
+            gap: 32px;
+            width: 100%;
+            max-width: 1374px;
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+        }
+
+        .live-tracking-cards-grid {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            padding: 0px;
+            gap: 24px;
+            width: 100%;
+        }
+
+        .live-tracking-card {
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 24px;
+            gap: 12px;
+            width: 442px;
+            height: 180px;
+            background: linear-gradient(256.54deg, rgba(239, 246, 255, 0.5) 22.65%, rgba(255, 255, 255, 0.5) 72.06%);
+            border: 1px solid #C5DEFF;
+            border-radius: 12px;
+            flex: none;
+            order: 0;
+            flex-grow: 1;
+        }
+
+        .live-tracking-card-header {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 0px;
+            gap: 12px;
+            width: 394px;
+            height: 20px;
+            flex: none;
+            order: 0;
+            align-self: stretch;
+        }
+
+        .live-tracking-check {
+            width: 20px;
+            height: 20px;
+            background: #4ABC51;
+            border-radius: 50%;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .live-tracking-card-title {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 100%;
+            letter-spacing: -0.02em;
+            color: #000000;
+            flex: none;
+            order: 1;
+        }
+
+        .live-tracking-card-desc {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 156%;
+            letter-spacing: -0.02em;
+            color: #435B79;
+            width: 394px;
+            height: 100px;
+            flex: none;
+            order: 1;
+            align-self: stretch;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .live-tracking-wrapper {
+                padding: 120px 32px;
+            }
+
+            .live-tracking-images {
+                max-width: 100%;
+                height: 550px;
+                padding: 0px 70px 0px 44px;
+            }
+
+            .live-tracking-images-group {
+                width: calc(100% - 44px);
+                height: 550px;
+            }
+
+            .live-tracking-frame-822 {
+                width: 100%;
+                height: 350px;
+                margin: -200px 0px;
+            }
+
+            .live-tracking-image-91 {
+                width: 650px;
+                height: 330px;
+            }
+
+            .live-tracking-frame-821 {
+                width: 100%;
+                height: 270px;
+            }
+
+            .live-tracking-image-93 {
+                width: 450px;
+                height: 270px;
+            }
+
+            .live-tracking-cards-grid {
+                flex-direction: column;
+            }
+
+            .live-tracking-card {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .live-tracking-wrapper {
+                padding: 80px 20px;
+            }
+
+            .live-tracking-title {
+                font-size: 28px;
+                line-height: 36px;
+            }
+
+            .live-tracking-container {
+                gap: 40px;
+                max-width: 100%;
+            }
+
+            .live-tracking-images {
+                max-width: 100%;
+                height: 400px;
+                padding: 0px 40px 0px 30px;
+            }
+
+            .live-tracking-images-group {
+                width: calc(100% - 30px);
+                height: 400px;
+            }
+
+            .live-tracking-frame-822 {
+                width: 100%;
+                height: 250px;
+                margin: -120px 0px;
+            }
+
+            .live-tracking-image-91 {
+                width: 350px;
+                height: 220px;
+            }
+
+            .live-tracking-frame-821 {
+                width: 100%;
+                height: 180px;
+            }
+
+            .live-tracking-image-93 {
+                width: 280px;
+                height: 180px;
+            }
+
+            .live-tracking-card {
+                width: 100%;
+            }
+
+            .live-tracking-card-title {
+                font-size: 18px;
+            }
+
+            .live-tracking-card-desc {
+                font-size: 14px;
+                width: 100%;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -1165,7 +1734,7 @@
             Your browser does not support the video tag.
         </video>
         <div class="hero-content">
-            <span class="chip"><span class="green-dot"></span>IIT Kharagpur Initiative</span>
+            <span class="chip"><span class="green-dot"></span>Pubbs Transit</span>
             <h1 class="hero-heading">Integrated Planning and Operation Software for Bus Transit Operators</h1>
             <p class="hero-sub">An Intelligent Urban Bus Transit Dispatch, Control and Surveillance System Using Artificial Intelligence and User Perception</p>
             <a href="#" class="btn-demo">Book a Demo</a>
@@ -1179,12 +1748,13 @@
 
     <!-- Next Section -->
     <div class="next-section">
-        <h2 class="next-section-heading scroll-fade">First <span>"Make in India"</span> Product for Bus service design and operations</h2>
+        <h2 class="next-section-heading" id="split-text-heading">First <span class="heading-bold">Make in India</span> Product for Bus service design and operations developed at <span class="heading-bold">City Future Lab, IIT Kharagpur</span></h2>
         <div class="logos-row scroll-fade">
             <img src="Logo_1.png" alt="Logo 1">
             <img src="Logo_2.png" alt="Logo 2">
             <img src="Logo_3.png" alt="Logo 3">
             <img src="Logo_4.png" alt="Logo 4">
+            <img src="Logo_5.png" alt="Logo 5">
         </div>
     </div>
 
@@ -1207,6 +1777,8 @@
 
     <!-- Features Tabs Section -->
     <section class="features-section">
+        <canvas id="features-flickering-grid"></canvas>
+
         <!-- Morphing background SVG (Rectangle 89/90/91) -->
         <svg class="features-bg-svg scroll-fade" viewBox="0 0 1920 900" preserveAspectRatio="none" aria-hidden="true">
             <defs>
@@ -1493,9 +2065,183 @@
         </div>
     </section>
 
-    <!-- Blank Section -->
+    <!-- Dark Features Section -->
     <section class="transit-role-section">
         <canvas id="flickering-grid-canvas"></canvas>
+
+        <div class="dark-features-section">
+            <h2 class="dark-features-heading scroll-fade">More Pubbs Transit features</h2>
+
+            <div class="dark-features-card scroll-fade">
+                <!-- Tabs -->
+                <div class="dark-features-tabs" role="tablist">
+                    <button type="button" class="dark-features-tab active" data-dark-tab="0" role="tab">
+                        <svg class="dark-tab-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 22C4.45 22 3.97917 21.8042 3.5875 21.4125C3.19583 21.0208 3 20.55 3 20V6C3 5.45 3.19583 4.97917 3.5875 4.5875C3.97917 4.19583 4.45 4 5 4H6V2H8V4H16V2H18V4H19C19.55 4 20.0208 4.19583 20.4125 4.5875C20.8042 4.97917 21 5.45 21 6V12.375L19 14.375V10H5V20H11.2L13.2 22H5ZM5 8H19V6H5V8ZM16.55 22.5L13 18.95L14.4 17.55L16.525 19.675L20.775 15.425L22.175 16.85L16.55 22.5Z"/></svg>
+                        Schedule Management
+                        <span class="dark-tab-indicator"></span>
+                    </button>
+                    <button type="button" class="dark-features-tab" data-dark-tab="1" role="tab">
+                        <svg class="dark-tab-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M1 20V17.2C1 16.6333 1.14583 16.1125 1.4375 15.6375C1.72917 15.1625 2.11667 14.8 2.6 14.55C3.63333 14.0333 4.68333 13.6458 5.75 13.3875C6.81667 13.1292 7.9 13 9 13C10.1 13 11.1833 13.1292 12.25 13.3875C13.3167 13.6458 14.3667 14.0333 15.4 14.55C15.8833 14.8 16.2708 15.1625 16.5625 15.6375C16.8542 16.1125 17 16.6333 17 17.2V20H1ZM19 20V17C19 16.2667 18.7958 15.5625 18.3875 14.8875C17.9792 14.2125 17.4 13.6333 16.65 13.15C17.5 13.25 18.3 13.4208 19.05 13.6625C19.8 13.9042 20.5 14.2 21.15 14.55C21.75 14.8833 22.2083 15.2542 22.525 15.6625C22.8417 16.0708 23 16.5167 23 17V20H19ZM6.175 10.825C5.39167 10.0417 5 9.1 5 8C5 6.9 5.39167 5.95833 6.175 5.175C6.95833 4.39167 7.9 4 9 4C10.1 4 11.0417 4.39167 11.825 5.175C12.6083 5.95833 13 6.9 13 8C13 9.1 12.6083 10.0417 11.825 10.825C11.0417 11.6083 10.1 12 9 12C7.9 12 6.95833 11.6083 6.175 10.825ZM17.825 10.825C17.0417 11.6083 16.1 12 15 12C14.8167 12 14.5833 11.9792 14.3 11.9375C14.0167 11.8958 13.7833 11.85 13.6 11.8C14.05 11.2667 14.3958 10.675 14.6375 10.025C14.8792 9.375 15 8.7 15 8C15 7.3 14.8792 6.625 14.6375 5.975C14.3958 5.325 14.05 4.73333 13.6 4.2C13.8333 4.11667 14.0667 4.0625 14.3 4.0375C14.5333 4.0125 14.7667 4 15 4C16.1 4 17.0417 4.39167 17.825 5.175C18.6083 5.95833 19 6.9 19 8C19 9.1 18.6083 10.0417 17.825 10.825Z"/></svg>
+                        Crew Management
+                        <span class="dark-tab-indicator"></span>
+                    </button>
+                    <button type="button" class="dark-features-tab" data-dark-tab="2" role="tab">
+                        <svg class="dark-tab-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 18H15C15.55 18 16.0208 17.8042 16.4125 17.4125C16.8042 17.0208 17 16.55 17 16V13H5V16C5 16.55 5.19583 17.0208 5.5875 17.4125C5.97917 17.8042 6.45 18 7 18ZM8.5625 16.5625C8.85417 16.2708 9 15.9167 9 15.5C9 15.0833 8.85417 14.7292 8.5625 14.4375C8.27083 14.1458 7.91667 14 7.5 14C7.08333 14 6.72917 14.1458 6.4375 14.4375C6.14583 14.7292 6 15.0833 6 15.5C6 15.9167 6.14583 16.2708 6.4375 16.5625C6.72917 16.8542 7.08333 17 7.5 17C7.91667 17 8.27083 16.8542 8.5625 16.5625ZM15.5625 16.5625C15.8542 16.2708 16 15.9167 16 15.5C16 15.0833 15.8542 14.7292 15.5625 14.4375C15.2708 14.1458 14.9167 14 14.5 14C14.0833 14 13.7292 14.1458 13.4375 14.4375C13.1458 14.7292 13 15.0833 13 15.5C13 15.9167 13.1458 16.2708 13.4375 16.5625C13.7292 16.8542 14.0833 17 14.5 17C14.9167 17 15.2708 16.8542 15.5625 16.5625ZM5 22C4.71667 22 4.47917 21.9042 4.2875 21.7125C4.09583 21.5208 4 21.2833 4 21V18.95C3.7 18.6167 3.45833 18.2458 3.275 17.8375C3.09167 17.4292 3 16.9833 3 16.5V7C3 5.61667 3.64167 4.60417 4.925 3.9625C6.20833 3.32083 8.23333 3 11 3C11.4333 3 11.8417 3.00417 12.225 3.0125C12.6083 3.02083 12.975 3.04167 13.325 3.075C13.2083 3.39167 13.125 3.7125 13.075 4.0375C13.025 4.3625 13 4.7 13 5.05C12.7167 5.03333 12.4125 5.02083 12.0875 5.0125C11.7625 5.00417 11.4167 5 11.05 5C9.6 5 8.4 5.08333 7.45 5.25C6.5 5.41667 5.83333 5.66667 5.45 6H13.075C13.1417 6.31667 13.2333 6.64167 13.35 6.975C13.4667 7.30833 13.6167 7.65 13.8 8H5V11H16.075L19 13.625V16.5C19 16.9833 18.9083 17.4292 18.725 17.8375C18.5417 18.2458 18.3 18.6167 18 18.95V21C18 21.2833 17.9042 21.5208 17.7125 21.7125C17.5208 21.9042 17.2833 22 17 22H16C15.7167 22 15.4792 21.9042 15.2875 21.7125C15.0958 21.5208 15 21.2833 15 21V20H7V21C7 21.2833 6.90417 21.5208 6.7125 21.7125C6.52083 21.9042 6.28333 22 6 22H5ZM18.2875 5.7125C18.0958 5.52083 18 5.28333 18 5C18 4.71667 18.0958 4.47917 18.2875 4.2875C18.4792 4.09583 18.7167 4 19 4C19.2833 4 19.5208 4.09583 19.7125 4.2875C19.9042 4.47917 20 4.71667 20 5C20 5.28333 19.9042 5.52083 19.7125 5.7125C19.5208 5.90417 19.2833 6 19 6C18.7167 6 18.4792 5.90417 18.2875 5.7125ZM20.775 3.2625C21.2583 3.77083 21.5 4.38333 21.5 5.1C21.5 5.63333 21.2958 6.22083 20.8875 6.8625C20.4792 7.50417 19.8583 8.21667 19.025 9C18.175 8.2 17.5417 7.48333 17.125 6.85C16.7083 6.21667 16.5 5.63333 16.5 5.1C16.5 4.38333 16.7417 3.77083 17.225 3.2625C17.7083 2.75417 18.3 2.5 19 2.5C19.7 2.5 20.2917 2.75417 20.775 3.2625ZM19 11C20.35 9.85 21.3542 8.7875 22.0125 7.8125C22.6708 6.8375 23 5.93333 23 5.1C23 3.96667 22.6125 3 21.8375 2.2C21.0625 1.4 20.1167 1 19 1C17.8833 1 16.9375 1.4 16.1625 2.2C15.3875 3 15 3.96667 15 5.1C15 5.93333 15.3292 6.8375 15.9875 7.8125C16.6458 8.7875 17.65 9.85 19 11Z"/></svg>
+                        Bus Dispatching
+                        <span class="dark-tab-indicator"></span>
+                    </button>
+                </div>
+
+                <!-- Panel 1: Schedule Management -->
+                <div class="dark-features-panel active" data-dark-panel="0">
+                    <div class="dark-features-left">
+                        <h3 class="dark-features-title">Smart Schedule Execution Control</h3>
+                        <div class="dark-features-list">
+                            <div class="dark-feature-item">
+                                <div class="dark-feature-head">
+                                    <span class="dark-feature-check"><svg viewBox="0 0 24 24"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>
+                                    <span class="dark-feature-title">Daily Timetable Generation</span>
+                                </div>
+                                <p class="dark-feature-desc">Generate complete operational timetables faster with structured workflows that improve daily readiness, timing accuracy, and execution consistency across depots.</p>
+                            </div>
+                            <div class="dark-feature-item">
+                                <div class="dark-feature-head">
+                                    <span class="dark-feature-check"><svg viewBox="0 0 24 24"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>
+                                    <span class="dark-feature-title">Unified Network Scheduling</span>
+                                </div>
+                                <p class="dark-feature-desc">Coordinate schedules across routes and depots seamlessly, improving fleet balance, operational efficiency, and citywide service coverage during planning activities.</p>
+                            </div>
+                            <div class="dark-feature-item">
+                                <div class="dark-feature-head">
+                                    <span class="dark-feature-check"><svg viewBox="0 0 24 24"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>
+                                    <span class="dark-feature-title">Real-Time Schedule Adjustments</span>
+                                </div>
+                                <p class="dark-feature-desc">Modify trips, timings, and vehicle activities quickly during disruptions to maintain reliable service continuity and reduce passenger dissatisfaction levels.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dark-features-right">
+                        <img src="feature_tab_1.png" alt="Schedule Management">
+                    </div>
+                </div>
+
+                <!-- Panel 2: Crew Management -->
+                <div class="dark-features-panel" data-dark-panel="1">
+                    <div class="dark-features-left">
+                        <h3 class="dark-features-title">Efficient Crew Operations Management</h3>
+                        <div class="dark-features-list">
+                            <div class="dark-feature-item">
+                                <div class="dark-feature-head">
+                                    <span class="dark-feature-check"><svg viewBox="0 0 24 24"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>
+                                    <span class="dark-feature-title">Workforce Availability Tracking</span>
+                                </div>
+                                <p class="dark-feature-desc">Monitor staff availability through centralized calendars that improve staffing accuracy, operational readiness, and workforce planning across daily service schedules.</p>
+                            </div>
+                            <div class="dark-feature-item">
+                                <div class="dark-feature-head">
+                                    <span class="dark-feature-check"><svg viewBox="0 0 24 24"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>
+                                    <span class="dark-feature-title">Shift Assignment Control</span>
+                                </div>
+                                <p class="dark-feature-desc">Assign and manage crew duties efficiently with structured scheduling workflows that reduce overlaps and improve operational coverage consistency.</p>
+                            </div>
+                            <div class="dark-feature-item">
+                                <div class="dark-feature-head">
+                                    <span class="dark-feature-check"><svg viewBox="0 0 24 24"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>
+                                    <span class="dark-feature-title">Reusable Crew Planning</span>
+                                </div>
+                                <p class="dark-feature-desc">Apply reusable crew templates across recurring schedules to accelerate roster creation and maintain consistent workforce deployment throughout operations.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dark-features-right">
+                        <img src="feature_tab_2.png" alt="Crew Management">
+                    </div>
+                </div>
+
+                <!-- Panel 3: Bus Dispatching -->
+                <div class="dark-features-panel" data-dark-panel="2">
+                    <div class="dark-features-left">
+                        <h3 class="dark-features-title">Intelligent Dispatch Control System</h3>
+                        <div class="dark-features-list">
+                            <div class="dark-feature-item">
+                                <div class="dark-feature-head">
+                                    <span class="dark-feature-check"><svg viewBox="0 0 24 24"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>
+                                    <span class="dark-feature-title">Live Bus Assignment</span>
+                                </div>
+                                <p class="dark-feature-desc">Assign buses to operational slots quickly with centralized dispatch visibility that improves departure readiness and daily fleet coordination efficiency.</p>
+                            </div>
+                            <div class="dark-feature-item">
+                                <div class="dark-feature-head">
+                                    <span class="dark-feature-check"><svg viewBox="0 0 24 24"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>
+                                    <span class="dark-feature-title">Bulk Dispatch Oversight</span>
+                                </div>
+                                <p class="dark-feature-desc">Dispatch multiple service slots simultaneously while monitoring assignment coverage gaps through streamlined control-room focused operational visibility tools.</p>
+                            </div>
+                            <div class="dark-feature-item">
+                                <div class="dark-feature-head">
+                                    <span class="dark-feature-check"><svg viewBox="0 0 24 24"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>
+                                    <span class="dark-feature-title">Incident Response Management</span>
+                                </div>
+                                <p class="dark-feature-desc">Handle breakdowns, cancellations, and reassignment workflows rapidly to maintain operational continuity and minimize passenger-facing service disruptions during incidents.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dark-features-right">
+                        <img src="feature_tab_3.png" alt="Bus Dispatching">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Tracking Section -->
+    <section class="live-tracking-wrapper">
+        <div class="live-tracking-container">
+            <h2 class="live-tracking-title scroll-fade">Real-Time Live Operations Platform</h2>
+
+            <div class="live-tracking-content">
+                <!-- Images Container -->
+                <div class="live-tracking-images scroll-fade">
+                    <div class="live-tracking-images-group">
+                        <div class="live-tracking-frame-822">
+                            <img src="image 91.png" alt="Operations Platform" class="live-tracking-image-91 scroll-fade">
+                        </div>
+                        <div class="live-tracking-frame-821">
+                            <img src="image 93.png" alt="Operations Dashboard" class="live-tracking-image-93 scroll-fade">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cards Container -->
+                <div class="live-tracking-cards">
+                    <div class="live-tracking-cards-grid">
+                        <div class="live-tracking-card scroll-fade">
+                            <div class="live-tracking-card-header">
+                                <div class="live-tracking-check">✓</div>
+                                <h3 class="live-tracking-card-title">Live Route Visibility</h3>
+                            </div>
+                            <p class="live-tracking-card-desc">Monitor routes and vehicle movement continuously through centralized dashboards that improve operational awareness and enable faster service interventions.</p>
+                        </div>
+
+                        <div class="live-tracking-card scroll-fade">
+                            <div class="live-tracking-card-header">
+                                <div class="live-tracking-check">✓</div>
+                                <h3 class="live-tracking-card-title">Smart Alert Handling</h3>
+                            </div>
+                            <p class="live-tracking-card-desc">Receive operational alerts with guided workflows that help teams respond faster and maintain consistent control-room decision making processes throughout the trips.</p>
+                        </div>
+
+                        <div class="live-tracking-card scroll-fade">
+                            <div class="live-tracking-card-header">
+                                <div class="live-tracking-check">✓</div>
+                                <h3 class="live-tracking-card-title">Distress Event Monitoring</h3>
+                            </div>
+                            <p class="live-tracking-card-desc">Track bus-linked distress activity efficiently to support rapid safety escalation, incident verification, and stronger operational accountability during emergencies.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <script>
@@ -1795,6 +2541,173 @@
                     if (e.key === 'ArrowLeft') activate((i - 1 + tabs.length) % tabs.length);
                 });
             });
+        })();
+
+        // ── Split Text Animation ──
+        (function () {
+            const el = document.getElementById('split-text-heading');
+            if (!el) return;
+
+            const DURATION = 0.7;
+            const STAGGER  = 30;
+
+            const childNodes = Array.from(el.childNodes);
+            el.innerHTML = '';
+
+            const allChars = [];
+
+            function splitTextContent(text, isBold) {
+                const words = text.trim().split(/\s+/);
+                words.forEach(word => {
+                    if (!word) return;
+                    const span = document.createElement('span');
+                    span.textContent = word;
+                    span.className = 'split-char';
+                    span.style.cssText = 'display: inline-block; opacity: 0; transform: translateY(40px); margin-right: 0.28em;';
+                    if (isBold) {
+                        span.style.fontWeight = '600';
+                        span.style.color = '#000000';
+                    }
+                    el.appendChild(span);
+                    allChars.push(span);
+                });
+            }
+
+            childNodes.forEach(node => {
+                if (node.nodeType === Node.TEXT_NODE) {
+                    splitTextContent(node.textContent, false);
+                } else if (node.nodeType === Node.ELEMENT_NODE) {
+                    const isBold = node.classList.contains('heading-bold');
+                    splitTextContent(node.textContent, isBold);
+                }
+            });
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        allChars.forEach((char, i) => {
+                            setTimeout(() => {
+                                char.style.transition = `opacity ${DURATION}s cubic-bezier(0.215, 0.61, 0.355, 1), transform ${DURATION}s cubic-bezier(0.215, 0.61, 0.355, 1)`;
+                                char.style.opacity = '1';
+                                char.style.transform = 'translateY(0)';
+                            }, i * STAGGER);
+                        });
+                        observer.disconnect();
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '-100px' });
+
+            observer.observe(el);
+        })();
+
+        // ── Dark Features Tabs ──
+        (function () {
+            const tabs   = document.querySelectorAll('.dark-features-tab');
+            const panels = document.querySelectorAll('.dark-features-panel');
+
+            function activateDark(idx) {
+                tabs.forEach((t, i) => t.classList.toggle('active', i === idx));
+                panels.forEach((p, i) => {
+                    if (i === idx) {
+                        p.classList.remove('active');
+                        void p.offsetWidth;
+                        p.classList.add('active');
+                    } else {
+                        p.classList.remove('active');
+                    }
+                });
+            }
+
+            tabs.forEach((tab, i) => {
+                tab.addEventListener('mousedown', e => e.preventDefault());
+                tab.addEventListener('click', () => {
+                    const sx = window.scrollX, sy = window.scrollY;
+                    activateDark(i);
+                    requestAnimationFrame(() => window.scrollTo(sx, sy));
+                });
+                tab.addEventListener('keydown', e => {
+                    if (e.key === 'ArrowRight') activateDark((i + 1) % tabs.length);
+                    if (e.key === 'ArrowLeft')  activateDark((i - 1 + tabs.length) % tabs.length);
+                });
+            });
+        })();
+
+        // ── Features Section Flickering Grid with Fade ──
+        (function () {
+            const canvas = document.getElementById('features-flickering-grid');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const section = canvas.closest('section');
+
+            const SQUARE_SIZE = 4;
+            const GRID_GAP = 6;
+            const COLOR = '#6889B3';
+            const MAX_OPACITY = 0.3;
+            const FLICKER_CHANCE = 0.1;
+            const STEP = SQUARE_SIZE + GRID_GAP;
+
+            let squares = [];
+            let currentOpacityMultiplier = 1;
+
+            function hexToRgb(hex) {
+                hex = hex.replace('#', '');
+                const v = parseInt(hex, 16);
+                return [(v >> 16) & 255, (v >> 8) & 255, v & 255];
+            }
+            const rgb = hexToRgb(COLOR);
+
+            function resizeCanvas() {
+                canvas.width = section.offsetWidth;
+                canvas.height = section.offsetHeight;
+                squares = [];
+                const cols = Math.ceil(canvas.width / STEP) + 1;
+                const rows = Math.ceil(canvas.height / STEP) + 1;
+                for (let r = 0; r < rows; r++) {
+                    for (let c = 0; c < cols; c++) {
+                        squares.push({
+                            x: c * STEP,
+                            y: r * STEP,
+                            opacity: Math.random() * MAX_OPACITY
+                        });
+                    }
+                }
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                squares.forEach(sq => {
+                    if (Math.random() < FLICKER_CHANCE) {
+                        sq.opacity = Math.random() * MAX_OPACITY;
+                    }
+                    ctx.fillStyle = `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, ${sq.opacity * currentOpacityMultiplier})`;
+                    ctx.fillRect(sq.x, sq.y, SQUARE_SIZE, SQUARE_SIZE);
+                });
+                requestAnimationFrame(animate);
+            }
+
+            function updateFadeOnScroll() {
+                const rect = section.getBoundingClientRect();
+                const sectionHeight = section.offsetHeight;
+                const fadeStart = 0;
+                const fadeEnd = sectionHeight;
+
+                const scrollProgress = -rect.top;
+                const fadeFraction = Math.max(0, Math.min(1, scrollProgress / fadeEnd));
+                currentOpacityMultiplier = Math.max(0, 1 - fadeFraction);
+
+                canvas.style.opacity = currentOpacityMultiplier;
+            }
+
+            let resizeTimer;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(resizeCanvas, 200);
+            });
+
+            window.addEventListener('scroll', updateFadeOnScroll);
+
+            resizeCanvas();
+            animate();
         })();
 
         // ── Flickering Grid ──
