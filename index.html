@@ -796,6 +796,104 @@
         }
 
         /* Responsive */
+        @media (max-width: 1440px) {
+            /* First Feature Tabs */
+            .features-card {
+                width: 1100px;
+                max-width: calc(100% - 48px);
+            }
+            .features-panel {
+                gap: 48px;
+                padding: 48px;
+                flex-direction: row;
+                align-items: center;
+            }
+            .features-left {
+                flex: 1;
+                gap: 8.15px;
+            }
+            .features-title {
+                font-size: 20px;
+                line-height: 100%;
+            }
+            .features-list {
+                gap: 16px;
+            }
+            .feature-item {
+                padding: 16px;
+                gap: 10px;
+                height: 133px;
+            }
+            .feature-head {
+                gap: 9.78px;
+            }
+            .feature-check {
+                width: 16px;
+                height: 16px;
+            }
+            .feature-title {
+                font-size: 16px;
+            }
+            .feature-desc {
+                font-size: 16px;
+                line-height: 156%;
+            }
+            .features-tab {
+                padding: 18px 19.5556px;
+                height: 58px;
+                gap: 8px;
+                font-size: 18px;
+            }
+            .features-tab svg.tab-icon {
+                width: 20px;
+                height: 20px;
+            }
+            .features-right img {
+                height: 471px;
+                object-fit: cover;
+            }
+
+            /* Dark Feature Tabs */
+            .dark-features-card {
+                width: 1100px;
+                max-width: calc(100% - 48px);
+            }
+            .dark-features-panel {
+                padding: 48px;
+                gap: 48px;
+            }
+            .dark-features-title {
+                font-size: 20px;
+                line-height: 100%;
+            }
+            .dark-features-list {
+                gap: 16px;
+            }
+            .dark-feature-item {
+                padding: 16px;
+                gap: 10px;
+                height: 133px;
+            }
+            .dark-feature-head {
+                gap: 9.78px;
+            }
+            .dark-feature-check {
+                width: 16px;
+                height: 16px;
+            }
+            .dark-feature-title {
+                font-size: 16px;
+            }
+            .dark-feature-desc {
+                font-size: 16px;
+                line-height: 156%;
+            }
+            .dark-features-right img {
+                height: 471px;
+                object-fit: cover;
+            }
+        }
+
         @media (max-width: 1100px) {
             .features-panel { gap: 48px; padding: 48px 32px 32px; flex-direction: column; }
             .features-tab { font-size: 18px; gap: 8px; padding: 18px; height: auto; }
@@ -1417,7 +1515,7 @@
             align-items: flex-start;
             padding: 0px;
             width: 100%;
-            gap: 40px;
+            gap: 24px;
         }
 
         .live-tracking-images {
@@ -1517,8 +1615,8 @@
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            padding: 24px 0px 0px;
-            gap: 32px;
+            padding: 0px;
+            gap: 24px;
             width: 100%;
             max-width: 1374px;
             backdrop-filter: blur(10px);
@@ -2217,7 +2315,7 @@
                     <div class="live-tracking-cards-grid">
                         <div class="live-tracking-card scroll-fade">
                             <div class="live-tracking-card-header">
-                                <div class="live-tracking-check">✓</div>
+                                <span class="dark-feature-check"><svg viewBox="0 0 24 24"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg></span>
                                 <h3 class="live-tracking-card-title">Live Route Visibility</h3>
                             </div>
                             <p class="live-tracking-card-desc">Monitor routes and vehicle movement continuously through centralized dashboards that improve operational awareness and enable faster service interventions.</p>
@@ -2225,7 +2323,7 @@
 
                         <div class="live-tracking-card scroll-fade">
                             <div class="live-tracking-card-header">
-                                <div class="live-tracking-check">✓</div>
+                                <span class="dark-feature-check"><svg viewBox="0 0 24 24"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg></span>
                                 <h3 class="live-tracking-card-title">Smart Alert Handling</h3>
                             </div>
                             <p class="live-tracking-card-desc">Receive operational alerts with guided workflows that help teams respond faster and maintain consistent control-room decision making processes throughout the trips.</p>
@@ -2233,7 +2331,7 @@
 
                         <div class="live-tracking-card scroll-fade">
                             <div class="live-tracking-card-header">
-                                <div class="live-tracking-check">✓</div>
+                                <span class="dark-feature-check"><svg viewBox="0 0 24 24"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg></span>
                                 <h3 class="live-tracking-card-title">Distress Event Monitoring</h3>
                             </div>
                             <p class="live-tracking-card-desc">Track bus-linked distress activity efficiently to support rapid safety escalation, incident verification, and stronger operational accountability during emergencies.</p>
