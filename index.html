@@ -1214,9 +1214,7 @@
             padding: 0 42px;
         }
 
-        .marquee-wrapper:hover .marquee-track {
-            animation-play-state: paused;
-        }
+        /* hover pause handled via JS for smooth deceleration */
 
         @keyframes marqueeScroll {
             0%   { transform: translateX(0); }
@@ -2993,6 +2991,31 @@
 
             // Initial call
             updateScrollAnimation();
+        })();
+
+        // ── Smooth marquee hover deceleration ──
+        (function () {
+            const wrapper = document.querySelector('.marquee-wrapper');
+            const track   = document.querySelector('.marquee-track');
+            if (!wrapper || !track) return;
+
+            let rafId = null;
+            let rate  = 1;
+
+            function tweenRate(target) {
+                cancelAnimationFrame(rafId);
+                function step() {
+                    rate += (target - rate) * 0.09;
+                    if (Math.abs(target - rate) < 0.004) rate = target;
+                    const anim = track.getAnimations()[0];
+                    if (anim) anim.updatePlaybackRate(rate);
+                    if (rate !== target) rafId = requestAnimationFrame(step);
+                }
+                rafId = requestAnimationFrame(step);
+            }
+
+            wrapper.addEventListener('mouseenter', () => tweenRate(0));
+            wrapper.addEventListener('mouseleave', () => tweenRate(1));
         })();
     </script>
 
