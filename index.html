@@ -872,15 +872,13 @@
                 width: 100%;
             }
             .dark-features-tab {
-                flex: none !important;
-                flex-grow: 1 !important;
+                flex: 1 1 0 !important;
                 height: 58px !important;
                 padding: 18px 24px !important;
                 gap: 10px !important;
                 font-size: 18px !important;
             }
             .dark-features-tab:first-child {
-                flex: 0 0 450px !important;
                 border-radius: 12px 0px 0px 0px !important;
             }
             .dark-features-tab:nth-child(2) {
@@ -965,15 +963,7 @@
             .features-section { padding: 120px 0 140px; }
         }
 
-        /* Dark features tabs — equal width at 1366–1400px */
-        @media (max-width: 1400px) {
-            .dark-features-tab:first-child {
-                flex: 1 1 0 !important;
-                width: auto !important;
-            }
-        }
-
-        @media (max-width: 640px) {
+@media (max-width: 640px) {
             .features-tabs { flex-direction: column; }
             .features-tab + .features-tab { border-left: none; border-top: 1px solid #ADD1FF; }
             .features-tab { font-size: 16px; }
