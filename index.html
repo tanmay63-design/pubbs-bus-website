@@ -964,6 +964,15 @@
             .feature-desc { font-size: 16px; }
             .features-section { padding: 120px 0 140px; }
         }
+
+        /* Dark features tabs — equal width at 1366–1400px */
+        @media (max-width: 1400px) {
+            .dark-features-tab:first-child {
+                flex: 1 1 0 !important;
+                width: auto !important;
+            }
+        }
+
         @media (max-width: 640px) {
             .features-tabs { flex-direction: column; }
             .features-tab + .features-tab { border-left: none; border-top: 1px solid #ADD1FF; }
