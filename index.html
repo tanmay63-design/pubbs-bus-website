@@ -3005,7 +3005,7 @@
             function tweenRate(target) {
                 cancelAnimationFrame(rafId);
                 function step() {
-                    rate += (target - rate) * 0.09;
+                    rate += (target - rate) * 0.22;
                     if (Math.abs(target - rate) < 0.004) rate = target;
                     const anim = track.getAnimations()[0];
                     if (anim) anim.updatePlaybackRate(rate);
