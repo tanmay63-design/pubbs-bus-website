@@ -835,17 +835,21 @@
                 border-radius: 6px !important;
             }
             .live-tracking-cards {
-                max-width: 1100px !important;
+                width: 1100px !important;
+                max-width: calc(100% - 48px) !important;
                 padding: 24px 0px 0px !important;
                 gap: 32px !important;
             }
             .live-tracking-cards-grid {
                 flex-direction: row !important;
                 gap: 24px !important;
-                width: 1100px !important;
+                width: 100% !important;
             }
             .live-tracking-card {
+                flex: 1 1 0 !important;
+                width: 0 !important;
                 height: 205px !important;
+                min-width: 0 !important;
             }
 
             /* Next Section — heading + logos */
