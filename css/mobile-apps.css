@@ -1,0 +1,172 @@
+/* ── Mobile Apps Section ── */
+.mobile-apps-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 180px 0;
+    gap: 64px;
+    background: linear-gradient(180deg, #FFEEEE 0%, #539EFF 100%);
+    width: 100%;
+    overflow: hidden;
+}
+
+.mobile-apps-heading {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 44px;
+    text-align: center;
+    letter-spacing: -0.02em;
+    color: #093061;
+    width: 100%;
+}
+
+/* Shared card shell */
+.mobile-apps-card {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 48px;
+    gap: 48px;
+    width: min(1320px, calc(100% - 120px));
+    border-radius: 12px;
+}
+
+.mobile-apps-card--driver {
+    background: rgba(254, 237, 238, 0.35);
+}
+
+.mobile-apps-card--user {
+    background: rgba(181, 203, 244, 0.53);
+}
+
+/* App screenshot image */
+.mobile-app-img {
+    flex: none;
+    width: 588px;
+    height: 584px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+/* White text panel */
+.mobile-app-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 48px;
+    gap: 24px;
+    flex: 1;
+    min-height: 584px;
+    background: #FFFFFF;
+    border-radius: 12px;
+}
+
+.mobile-app-panel-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 100%;
+    letter-spacing: -0.02em;
+    color: #000000;
+}
+
+.mobile-app-panel-desc {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 156%;
+    letter-spacing: -0.02em;
+    color: #435B79;
+    width: 100%;
+}
+
+/* Staggered fade delays */
+.mobile-apps-card:nth-child(2).scroll-fade { transition-delay: 0.10s; }
+.mobile-apps-card:nth-child(3).scroll-fade { transition-delay: 0.22s; }
+.mobile-app-img.scroll-fade    { transition-delay: 0.18s; }
+.mobile-app-panel.scroll-fade  { transition-delay: 0.30s; }
+.mobile-app-panel-title.scroll-fade  { transition-delay: 0.36s; }
+.mobile-app-panel-desc:nth-child(2).scroll-fade { transition-delay: 0.42s; }
+.mobile-app-panel-desc:nth-child(3).scroll-fade { transition-delay: 0.52s; }
+.mobile-app-panel-desc:nth-child(4).scroll-fade { transition-delay: 0.62s; }
+.mobile-app-btn.scroll-fade    { transition-delay: 0.70s; }
+
+/* ── Mobile Apps responsive (1600px) ── */
+@media (max-width: 1600px) {
+    .mobile-apps-section {
+        padding: 120px 0;
+        gap: 48px;
+    }
+
+    .mobile-apps-card {
+        width: min(1100px, calc(100% - 80px));
+        padding: 36px;
+        gap: 36px;
+    }
+
+    .mobile-app-img {
+        width: 460px;
+        height: 456px;
+    }
+
+    .mobile-app-panel {
+        padding: 36px;
+        min-height: 456px;
+    }
+
+    .mobile-app-panel-title {
+        font-size: 22px;
+    }
+
+    .mobile-app-panel-desc {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .mobile-apps-card {
+        flex-direction: column;
+        width: calc(100% - 48px);
+        padding: 28px;
+        gap: 28px;
+    }
+
+    .mobile-app-img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 588 / 584;
+    }
+
+    .mobile-app-panel {
+        min-height: unset;
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .mobile-apps-section {
+        padding: 80px 0;
+        gap: 32px;
+    }
+
+    .mobile-apps-heading {
+        font-size: 28px;
+        padding: 0 24px;
+    }
+
+    .mobile-apps-card {
+        width: calc(100% - 32px);
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .mobile-app-panel {
+        padding: 24px;
+        gap: 18px;
+    }
+
+    .mobile-app-panel-title { font-size: 20px; }
+    .mobile-app-panel-desc  { font-size: 14px; }
+}

@@ -1,0 +1,166 @@
+/* ── 3D Marquee ── */
+.marquee-3d-wrapper {
+    width: min(1320px, calc(100% - 120px));
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    padding: 8px;
+    position: relative;
+}
+
+.marquee-3d-viewport {
+    height: 600px;
+    overflow: hidden;
+    border-radius: 18px;
+    position: relative;
+}
+
+.marquee-3d-stage {
+    position: absolute;
+    inset: 0;
+}
+
+.marquee-3d-scene {
+    position: absolute;
+    width: 1720px;
+    height: 1720px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.5);
+}
+
+@media (min-width: 640px) {
+    .marquee-3d-scene { transform: translate(-50%, -50%) scale(0.75); }
+}
+@media (min-width: 1024px) {
+    .marquee-3d-scene { transform: translate(-50%, -50%) scale(1); }
+}
+
+.marquee-3d-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    width: 100%;
+    transform: rotateX(55deg) rotateY(0deg) rotateZ(-45deg) scale(1.4);
+    transform-origin: center center;
+    transform-style: preserve-3d;
+}
+
+.m3d-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+    will-change: transform;
+}
+
+.m3d-col-even {
+    animation: m3dDown 10s ease-in-out infinite alternate;
+}
+
+.m3d-col-odd {
+    animation: m3dUp 15s ease-in-out infinite alternate;
+}
+
+.m3d-img {
+    width: 100%;
+    aspect-ratio: 970 / 700;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06), 0 4px 16px rgba(0, 0, 0, 0.1);
+    opacity: 0.13;
+}
+
+@media (max-width: 768px) {
+    .marquee-3d-wrapper { width: calc(100% - 32px); }
+    .marquee-3d-viewport { height: 400px; }
+}
+
+/* ── CTA Section ── */
+.cta-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 180px 0;
+    gap: 64px;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: linear-gradient(180deg, #539EFE 0%, #103E7B 100%);
+}
+
+.cta-text-block {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    width: min(760px, calc(100% - 48px));
+    text-align: center;
+    pointer-events: none;
+}
+
+.cta-text-block .cta-btn {
+    pointer-events: all;
+}
+
+.cta-heading {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 1.22;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+}
+
+.cta-sub {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 1.65;
+    letter-spacing: -0.01em;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 8px;
+    padding: 14px 34px;
+    background: #1C7BF6;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.cta-btn:hover {
+    background: #0f66d8;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .cta-heading { font-size: 26px; }
+    .cta-sub     { font-size: 15px; }
+}
+
+/* ── CTA text block: keep absolute centering while scroll-fade animates ── */
+.cta-section .cta-text-block.scroll-fade {
+    transform: translate(-50%, calc(-50% + 30px));
+}
+
+.cta-section .cta-text-block.scroll-fade.visible {
+    transform: translate(-50%, -50%);
+}

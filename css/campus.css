@@ -1,0 +1,450 @@
+/* ── Campus Hero ── */
+.campus-hero {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1920 / 798;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.campus-hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('../campus_banner.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+}
+
+.campus-hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 0 24px;
+    max-width: 860px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+.campus-hero-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 64px;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+    line-height: 1.1;
+}
+
+.campus-hero-sub {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 134%;
+    letter-spacing: 0.005em;
+    color: #ffffff;
+    text-shadow: 0px 0px 38.9px rgba(0, 0, 0, 0.96);
+    max-width: 780px;
+}
+
+/* ── Text Reveal Section ── */
+.campus-text-section {
+    width: 100%;
+    margin-top: 180px;
+    padding: 0 24px 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+}
+
+.campus-text-reveal {
+    max-width: 960px;
+    width: 100%;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: clamp(20px, 3.4vw, 36px);
+    line-height: 1.5;
+    letter-spacing: -0.015em;
+    color: #0A1F3D;
+    text-align: center;
+}
+
+/* Shared word-reveal classes (same engine as software page) */
+.sw-reveal-word {
+    opacity: 0.22;
+    transition: opacity 0.4s ease;
+}
+
+.sw-reveal-word.is-active {
+    opacity: 1;
+}
+
+/* ── Campus System Image ── */
+.campus-system-section {
+    width: 100%;
+    margin-top: 240px;
+    padding: 0 24px 120px;
+    display: flex;
+    justify-content: center;
+}
+
+.campus-system-img {
+    width: 1320px;
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ── Responsive ── */
+/* ── Campus Eco-System Cards Section ── */
+.campus-ecosystem-section {
+    position: relative;
+    width: 100%;
+    padding: 120px 0;
+    margin-bottom: 230px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 80px;
+    overflow: hidden;
+}
+
+.campus-eco-heading {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 44px;
+    letter-spacing: -0.02em;
+    color: #000000;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    padding: 0 24px;
+}
+
+.campus-eco-cards {
+    width: 1320px;
+    max-width: calc(100% - 48px);
+    display: flex;
+    gap: 48px;
+    position: relative;
+    z-index: 1;
+}
+
+.campus-eco-card {
+    flex: 1;
+    height: 550px;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.campus-eco-card-label {
+    position: absolute;
+    bottom: 24px;
+    left: 24px;
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(51.2px);
+    -webkit-backdrop-filter: blur(51.2px);
+    font-size: 24px;
+    font-weight: 400;
+    font-family: 'Inter', sans-serif;
+    color: #ffffff;
+    white-space: nowrap;
+}
+
+/* Staggered scroll-fade for the 3 cards */
+.campus-eco-cards .campus-eco-card:nth-child(1).scroll-fade { transition-delay: 0.18s; }
+.campus-eco-cards .campus-eco-card:nth-child(2).scroll-fade { transition-delay: 0.36s; }
+.campus-eco-cards .campus-eco-card:nth-child(3).scroll-fade { transition-delay: 0.54s; }
+
+/* ── Campus Detail Zigzag Section ── */
+.campus-detail-section {
+    width: 1320px;
+    max-width: calc(100% - 48px);
+    margin: 0 auto 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 245px;
+}
+
+.campus-detail-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.campus-detail-row--reverse {
+    flex-direction: row-reverse;
+}
+
+.campus-detail-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 24px;
+    width: 702px;
+    flex-shrink: 0;
+}
+
+.campus-detail-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 100%;
+    letter-spacing: -0.02em;
+    color: #000000;
+}
+
+.campus-detail-para {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 156%;
+    letter-spacing: -0.02em;
+    color: #435B79;
+}
+
+.campus-detail-feature {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px;
+    gap: 12px;
+    width: 100%;
+    background: #EFF6FF;
+    border: 1px solid #BFDBFF;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+.campus-detail-feature p {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 156%;
+    letter-spacing: -0.02em;
+    color: #435B79;
+}
+
+.campus-detail-check {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #4ABC51;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.campus-detail-check svg {
+    width: 14px;
+    height: 14px;
+    fill: #fff;
+}
+
+.campus-detail-img {
+    width: 542px;
+    height: 564px;
+    border-radius: 12px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+@media (max-width: 1600px) {
+    .campus-system-img {
+        width: 1100px;
+    }
+
+    .campus-ecosystem-section {
+        gap: 64px;
+    }
+
+    .campus-eco-heading {
+        font-size: 28px;
+    }
+
+    .campus-eco-cards {
+        width: 1100px;
+        gap: 40px;
+    }
+
+    .campus-eco-card {
+        height: auto;
+        aspect-ratio: 816 / 1100;
+        border-radius: 6px;
+    }
+
+    .campus-eco-card-label {
+        font-size: 20px;
+    }
+
+    .campus-detail-section {
+        width: 1100px;
+        gap: 160px;
+    }
+
+    .campus-detail-content {
+        width: 560px;
+        gap: 20px;
+    }
+
+    .campus-detail-title {
+        font-size: 24px;
+    }
+
+    .campus-detail-para {
+        font-size: 16px;
+    }
+
+    .campus-detail-feature {
+        gap: 10px;
+        padding: 20px;
+    }
+
+    .campus-detail-feature p {
+        font-size: 16px;
+    }
+
+    .campus-detail-img {
+        width: 460px;
+        height: 480px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .campus-system-section {
+        padding: 0 24px 80px;
+    }
+
+    .campus-system-img {
+        width: 100%;
+    }
+
+    .campus-eco-cards {
+        flex-direction: column;
+        align-items: center;
+        width: calc(100% - 48px);
+        gap: 24px;
+    }
+
+    .campus-eco-card {
+        width: 100%;
+        max-width: 520px;
+        height: 380px;
+    }
+
+    .campus-detail-section {
+        gap: 80px;
+    }
+
+    .campus-detail-row,
+    .campus-detail-row--reverse {
+        flex-direction: column;
+        gap: 32px;
+    }
+
+    .campus-detail-section .campus-detail-row:nth-child(2) {
+        flex-direction: column-reverse;
+    }
+
+    .campus-detail-content {
+        width: 100%;
+    }
+
+    .campus-detail-img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 542 / 564;
+    }
+}
+
+@media (max-width: 768px) {
+    .campus-hero {
+        aspect-ratio: unset;
+        min-height: 525px;
+    }
+
+    .campus-hero-title {
+        font-size: 24px;
+    }
+
+    .campus-hero-sub {
+        font-size: 16px;
+    }
+
+    .campus-system-section {
+        margin-top: 80px;
+        padding: 0 24px 64px;
+    }
+
+    .campus-system-img {
+        width: 100%;
+    }
+
+    .campus-ecosystem-section {
+        padding: 80px 24px;
+        gap: 48px;
+        margin-bottom: 80px;
+    }
+
+    .campus-detail-section {
+        gap: 64px;
+        margin-bottom: 80px;
+    }
+
+    .campus-detail-title {
+        font-size: 22px;
+    }
+
+    .campus-detail-para,
+    .campus-detail-feature p {
+        font-size: 15px;
+    }
+
+    .campus-eco-heading {
+        font-size: 20px;
+        line-height: 24px;
+        letter-spacing: -0.02em;
+        color: #000000;
+        padding: 0;
+    }
+
+    .campus-eco-cards {
+        flex-direction: column;
+        width: 100%;
+        max-width: 100%;
+        gap: 24px;
+    }
+
+    .campus-eco-card {
+        flex: none;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        aspect-ratio: 327 / 441;
+        border-radius: 6px;
+    }
+
+    .campus-eco-card-label {
+        font-size: 16px;
+        font-weight: 600;
+        backdrop-filter: blur(3px);
+        -webkit-backdrop-filter: blur(3px);
+    }
+}

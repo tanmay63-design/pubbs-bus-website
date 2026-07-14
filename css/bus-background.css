@@ -1,0 +1,454 @@
+/* ──────────── Bus Background Section ──────────── */
+.bus-background-section {
+    position: relative;
+    width: 100%;
+    background: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+}
+
+.bus-background-picture {
+    display: contents;
+}
+
+.bus-bg-spacer {
+    display: none;
+}
+
+.bus-bg-image-wrap {
+    display: contents;
+}
+
+.bus-background-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.bus-bg-transit-overlay {
+    position: absolute;
+    top: 250px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 80px;
+    z-index: 1;
+}
+
+/* Frame 801 */
+.bus-bg-container {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 48px;
+    gap: 70px;
+    width: 1320px;
+    height: auto;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(240, 251, 255, 0.4) 100%);
+    border: 2px solid #FFFFFF;
+    box-shadow: 0px 19px 36.2px rgba(28, 123, 246, 0.12);
+    backdrop-filter: blur(10.45px);
+    -webkit-backdrop-filter: blur(10.45px);
+    border-radius: 24px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    z-index: 1;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: opacity, transform;
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+.bus-bg-container.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Frame 799 */
+.bus-bg-text-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 80px;
+    width: 1224px;
+    height: auto;
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition-delay: 0.2s;
+    will-change: opacity, transform;
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+.bus-bg-text-row.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.bus-bg-text-item {
+    margin: 0 auto;
+    width: 533px;
+    height: auto;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 34px;
+    text-align: center;
+    letter-spacing: -0.02em;
+    color: #414141;
+    flex: none;
+    flex-grow: 0;
+    word-wrap: break-word;
+}
+
+.bus-bg-text-item:nth-child(2) {
+    order: 1;
+}
+
+/* Frame 800 */
+.bus-bg-numbers-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 80px;
+    width: 1224px;
+    height: 150px;
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+.bus-bg-number-item {
+    margin: 0 auto;
+    width: 533px;
+    height: 150px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 150px;
+    line-height: 100%;
+    text-align: center;
+    letter-spacing: -0.07em;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    flex: none;
+    flex-grow: 0;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: opacity, transform;
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+.bus-bg-number-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.bus-bg-number-item:nth-child(1) {
+    background: linear-gradient(180deg, #AC1DFF 0%, #1C7BF6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    order: 0;
+    transition-delay: 0.4s;
+}
+
+.bus-bg-number-item:nth-child(2) {
+    background: linear-gradient(360deg, #AC1DFF 0%, #1C7BF6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    order: 1;
+    transition-delay: 0.5s;
+}
+
+/* ──────────── Transit Role Section (marquee container) ──────────── */
+.transit-role-section {
+    position: relative;
+    width: 100%;
+    padding: 95px 0;
+    background: linear-gradient(to bottom, #252C35, #051831);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 80px;
+}
+
+.transit-role-heading {
+    position: relative;
+    z-index: 1;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 44px;
+    letter-spacing: -0.02em;
+    color: #000000;
+    text-align: center;
+    padding: 0 24px;
+}
+
+.transit-role-section .marquee-wrapper.scroll-fade {
+    transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition-delay: 0.25s;
+}
+
+.marquee-wrapper {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    overflow: hidden;
+    padding: 20px 0;
+    will-change: opacity, transform;
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+.marquee-track {
+    display: flex;
+    flex-direction: row;
+    gap: 84px;
+    width: max-content;
+    animation: marqueeScroll 35s linear infinite;
+    padding: 0 42px;
+    will-change: transform;
+}
+
+/* Transit Card */
+.transit-card {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 24px;
+    gap: 36px;
+    width: 686px;
+    height: 430px;
+    background: #FFFFFF;
+    border: 2px solid #EAF3FF;
+    box-shadow: 0px 0px 40.2px rgba(163, 163, 163, 0.12);
+    border-radius: 12px;
+    flex-shrink: 0;
+}
+
+.transit-card-image {
+    width: 280px;
+    height: 382px;
+    border-radius: 12px;
+    flex-shrink: 0;
+    background-size: cover;
+    background-position: center;
+}
+
+.transit-card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 24px;
+    width: 334px;
+}
+
+.transit-card-title {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 100%;
+    letter-spacing: -0.02em;
+    color: #4C5663;
+    align-self: stretch;
+}
+
+.transit-card-desc {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 156%;
+    letter-spacing: -0.02em;
+    color: #4C5663;
+    align-self: stretch;
+}
+
+.transit-card-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    align-self: stretch;
+}
+
+.transit-card-list li {
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 156%;
+    letter-spacing: -0.02em;
+    color: #4C5663;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.transit-card-list li::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #1C7BF6;
+    flex-shrink: 0;
+    margin-top: 9px;
+}
+
+/* ── Transit responsive (1600px) ── */
+@media (max-width: 1600px) {
+    .transit-card {
+        width: 670px !important;
+        height: 391.8px !important;
+    }
+    .transit-card-image {
+        width: 252px !important;
+        height: 343.8px !important;
+        border-radius: 10.8px !important;
+    }
+    .transit-card-title {
+        font-size: 20px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .bus-background-section {
+        padding-top: 48px;
+    }
+
+    .bus-bg-spacer {
+        display: block;
+        width: 100%;
+        height: 400px;
+    }
+    .bus-bg-image-wrap {
+        display: block;
+        position: relative;
+        width: 100%;
+        aspect-ratio: 675 / 1091;
+    }
+    .bus-background-img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 0;
+    }
+    .transit-role-section { padding: 120px 0; gap: 48px; }
+
+    .bus-bg-transit-overlay {
+        top: 48px;
+        gap: 48px;
+    }
+
+    .transit-role-heading {
+        font-size: 20px;
+        line-height: 24px;
+    }
+
+    .marquee-wrapper {
+        touch-action: pan-y;
+    }
+
+    .marquee-track {
+        width: auto;
+        gap: 0;
+        padding: 0;
+        animation: none;
+    }
+
+    .marquee-track .marquee-duplicate {
+        display: none;
+    }
+
+    /* Frame 808 */
+    .transit-card {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 24px;
+        gap: 24px;
+        width: calc(100% - 48px) !important;
+        height: 598px !important;
+        flex: 0 0 calc(100% - 48px) !important;
+        margin: 0 24px;
+        background: #FFFFFF;
+        border: 2px solid #EAF3FF;
+        box-shadow: 0px 0px 40.2px rgba(163, 163, 163, 0.15);
+        border-radius: 12px;
+        flex-shrink: 0;
+    }
+
+    /* Rectangle 93 */
+    .transit-card-image {
+        width: 100% !important;
+        height: 218px !important;
+        background-size: cover;
+        background-position: center;
+        border-radius: 6px !important;
+        align-self: stretch;
+        flex-shrink: 0;
+    }
+
+    /* Frame 805 */
+    .transit-card-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0;
+        gap: 24px;
+        width: 100%;
+        align-self: stretch;
+    }
+
+    .transit-card-title {
+        width: 100%;
+        font-size: 18px !important;
+        line-height: 100%;
+        align-self: stretch;
+    }
+
+    .transit-card-desc {
+        width: 100%;
+        font-size: 14px;
+        line-height: 156%;
+        align-self: stretch;
+    }
+
+    .transit-card-list li {
+        font-size: 14px;
+        line-height: 156%;
+    }
+}

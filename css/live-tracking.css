@@ -1,0 +1,519 @@
+/* ──────────── Live Tracking Section ──────────── */
+.live-tracking-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 180px 48px;
+    gap: 10px;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: linear-gradient(180deg, #FFFFFF 63.79%, #FEEEEE 100%);
+}
+
+.live-tracking-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    gap: 64px;
+    width: 100%;
+    max-width: 1374px;
+    margin: 0 auto;
+}
+
+.live-tracking-title {
+    width: 100%;
+    max-width: 604px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 44px;
+    letter-spacing: -0.01em;
+    background: linear-gradient(180deg, #072955 0%, #114487 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-align: center;
+}
+
+.live-tracking-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    width: 100%;
+    gap: 24px;
+}
+
+.live-tracking-images {
+    position: relative;
+    width: 100%;
+    max-width: 1374px;
+    height: 659px;
+    border-radius: 24.72px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0px 143px 0px 88px;
+    gap: 10px;
+    background: url(../Frame\ 823.png);
+    background-size: cover;
+    background-position: center;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.live-tracking-images-group {
+    width: 1143px;
+    height: 659px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0px;
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+}
+
+.live-tracking-frame-822 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 0px;
+    gap: 10px;
+    width: 1143px;
+    height: 409px;
+    margin: 0px 0px -269px 0px;
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+.live-tracking-image-91 {
+    width: 824px;
+    height: 409px;
+    border-radius: 12px;
+    object-fit: cover;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    transition-delay: 0s;
+}
+
+.live-tracking-image-91.scroll-fade.visible {
+    transition-delay: 0.1s;
+}
+
+.live-tracking-frame-821 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 10px;
+    width: 1143px;
+    height: 339px;
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+.live-tracking-image-93 {
+    width: 594px;
+    height: 339px;
+    border-radius: 12px;
+    object-fit: cover;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    transition-delay: 0s;
+}
+
+.live-tracking-image-93.scroll-fade.visible {
+    transition-delay: 0.25s;
+}
+
+.live-tracking-cards {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 24px;
+    width: 100%;
+    max-width: 1374px;
+    backdrop-filter: blur(10px);
+    border-radius: 24px;
+}
+
+.live-tracking-cards-grid {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 24px;
+    width: 100%;
+}
+
+.live-tracking-card {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px;
+    gap: 12px;
+    width: 442px;
+    height: 180px;
+    background: linear-gradient(256.54deg, rgba(239, 246, 255, 0.5) 22.65%, rgba(255, 255, 255, 0.5) 72.06%);
+    border: 1px solid #C5DEFF;
+    border-radius: 12px;
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+}
+
+.live-tracking-card-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 12px;
+    width: 394px;
+    height: 20px;
+    flex: none;
+    order: 0;
+    align-self: stretch;
+}
+
+.live-tracking-check {
+    width: 20px;
+    height: 20px;
+    background: #4ABC51;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.live-tracking-card-title {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 100%;
+    letter-spacing: -0.02em;
+    color: #000000;
+    flex: none;
+    order: 1;
+}
+
+.live-tracking-card-desc {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 156%;
+    letter-spacing: -0.02em;
+    color: #435B79;
+    width: 394px;
+    height: 100px;
+    flex: none;
+    order: 1;
+    align-self: stretch;
+}
+
+/* ── Live Tracking responsive (1600px) ── */
+@media (max-width: 1600px) {
+    .live-tracking-container {
+        max-width: 1100px !important;
+    }
+    .live-tracking-images {
+        width: 1100px !important;
+        max-width: 1100px !important;
+        height: 659px !important;
+        padding: 0px 88px !important;
+        justify-content: center !important;
+        align-items: center !important;
+        border-radius: 24.72px !important;
+    }
+    .live-tracking-images-group {
+        width: 949px !important;
+        height: 659px !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        padding-top: 108px !important;
+    }
+    .live-tracking-frame-822 {
+        width: 949px !important;
+        height: 369px !important;
+        margin: 0px 0px -236px 0px !important;
+    }
+    .live-tracking-image-91 {
+        width: 743px !important;
+        height: 369px !important;
+        border-radius: 6px !important;
+    }
+    .live-tracking-frame-821 {
+        width: 949px !important;
+        height: 309px !important;
+    }
+    .live-tracking-image-93 {
+        width: 541px !important;
+        height: 309px !important;
+        border-radius: 6px !important;
+    }
+    .live-tracking-cards {
+        width: 1100px !important;
+        max-width: 100% !important;
+        padding: 24px 0px 0px !important;
+        gap: 32px !important;
+    }
+    .live-tracking-cards-grid {
+        flex-direction: row !important;
+        gap: 24px !important;
+        width: 100% !important;
+    }
+    .live-tracking-card {
+        flex: 1 1 0 !important;
+        width: 0 !important;
+        height: auto !important;
+        min-height: 205px !important;
+        min-width: 0 !important;
+    }
+    .live-tracking-card-header {
+        width: 100% !important;
+    }
+    .live-tracking-card-desc {
+        width: 100% !important;
+        height: auto !important;
+    }
+}
+
+@media (max-width: 1024px) {
+    .live-tracking-wrapper {
+        padding: 120px 32px;
+    }
+
+    .live-tracking-images {
+        max-width: 100%;
+        height: 550px;
+        padding: 0px 70px 0px 44px;
+    }
+
+    .live-tracking-images-group {
+        width: calc(100% - 44px);
+        height: 550px;
+    }
+
+    .live-tracking-frame-822 {
+        width: 100%;
+        height: 350px;
+        margin: -200px 0px;
+    }
+
+    .live-tracking-image-91 {
+        width: 650px;
+        height: 330px;
+    }
+
+    .live-tracking-frame-821 {
+        width: 100%;
+        height: 270px;
+    }
+
+    .live-tracking-image-93 {
+        width: 450px;
+        height: 270px;
+    }
+
+    .live-tracking-cards-grid {
+        flex-direction: column;
+    }
+
+    .live-tracking-card {
+        width: 100%;
+    }
+}
+
+/* ── Live Tracking Section Mobile ── */
+@media (max-width: 768px) {
+    .live-tracking-wrapper {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        padding: 48px 0 !important;
+        gap: 24px !important;
+        width: 100% !important;
+        height: auto !important;
+        background: #FFFFFF !important;
+    }
+
+    .live-tracking-container {
+        display: contents !important;
+    }
+
+    .live-tracking-content {
+        display: contents !important;
+    }
+
+    .live-tracking-title {
+        width: 213px !important;
+        max-width: 100% !important;
+        height: auto !important;
+        font-size: 20px !important;
+        line-height: 128% !important;
+        letter-spacing: -0.01em !important;
+        text-align: center !important;
+        margin: 0 auto !important;
+        background: linear-gradient(180deg, #072955 0%, #114487 100%) !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+        background-clip: text !important;
+    }
+
+    .live-tracking-images {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 360.01px !important;
+        padding: 0 24px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: flex-start !important;
+        gap: 10px !important;
+        border-radius: 0 !important;
+        box-sizing: border-box !important;
+        overflow: visible !important;
+    }
+
+    .live-tracking-images-group {
+        width: 100% !important;
+        height: 360.01px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        padding: 48px 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    .live-tracking-frame-822 {
+        width: 100% !important;
+        height: 162.31px !important;
+        margin: 0 0 -70px 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-end !important;
+        gap: 10px !important;
+    }
+
+    .live-tracking-image-91 {
+        width: 100% !important;
+        height: 162.31px !important;
+        object-fit: cover !important;
+        border-radius: 0 !important;
+        box-shadow: 0px 28px 25.1px -19px rgba(28, 123, 246, 0.18) !important;
+    }
+
+    .live-tracking-frame-821 {
+        width: 100% !important;
+        height: 171.71px !important;
+        padding: 0 24px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 10px !important;
+        box-sizing: border-box !important;
+    }
+
+    .live-tracking-image-93 {
+        width: 100% !important;
+        height: 146.5px !important;
+        object-fit: cover !important;
+        border-radius: 2px !important;
+        filter: drop-shadow(0px 0px 18.7px rgba(28, 123, 246, 0.19)) !important;
+    }
+
+    .live-tracking-cards {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 24px !important;
+        gap: 32px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        backdrop-filter: blur(10px) !important;
+        border-radius: 24px !important;
+        box-sizing: border-box !important;
+    }
+
+    .live-tracking-cards-grid {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 24px !important;
+        width: 100% !important;
+    }
+
+    .live-tracking-card {
+        flex: none !important;
+        width: 100% !important;
+        height: auto !important;
+        min-width: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        padding: 24px !important;
+        gap: 12px !important;
+        border: 1px solid #C5DEFF !important;
+        border-radius: 6px !important;
+        box-sizing: border-box !important;
+    }
+
+    .live-tracking-card:nth-child(1) {
+        background: linear-gradient(256.54deg, rgba(239, 246, 255, 0.5) 22.65%, rgba(255, 255, 255, 0.5) 72.06%) !important;
+    }
+
+    .live-tracking-card:nth-child(2) {
+        background: linear-gradient(91.6deg, rgba(239, 246, 255, 0.5) 0.8%, rgba(255, 255, 255, 0.5) 98.93%) !important;
+    }
+
+    .live-tracking-card:nth-child(3) {
+        background: linear-gradient(123.7deg, rgba(255, 255, 255, 0.5) 21.96%, rgba(239, 246, 255, 0.5) 70.01%) !important;
+    }
+
+    .live-tracking-card-header {
+        width: 100% !important;
+        height: auto !important;
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 12px !important;
+    }
+
+    .live-tracking-card-title {
+        font-size: 16px !important;
+        font-weight: 500 !important;
+        line-height: 100% !important;
+        letter-spacing: -0.02em !important;
+        color: #000000 !important;
+    }
+
+    .live-tracking-card-desc {
+        width: 100% !important;
+        height: auto !important;
+        font-size: 14px !important;
+        font-weight: 400 !important;
+        line-height: 156% !important;
+        letter-spacing: -0.02em !important;
+        color: #435B79 !important;
+    }
+}

@@ -1,0 +1,99 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+/* ── Keyframe animations ── */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUpHeader {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUpHeaderMobile {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes marqueeScroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+@keyframes m3dDown {
+    from { transform: translateY(0px); }
+    to   { transform: translateY(100px); }
+}
+
+@keyframes m3dUp {
+    from { transform: translateY(0px); }
+    to   { transform: translateY(-100px); }
+}
+
+/* ── Scroll fade-up utility ── */
+.scroll-fade {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: opacity, transform;
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+.scroll-fade.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.scroll-fade:nth-child(2) { transition-delay: 0.15s; }
+
+/* Ecosystem staggered fade-up */
+.ecosystem-heading.scroll-fade                        { transition-delay: 0s; }
+.ecosystem-cards .eco-card:nth-child(1).scroll-fade   { transition-delay: 0.18s; }
+.ecosystem-cards .eco-card:nth-child(2).scroll-fade   { transition-delay: 0.36s; }
+.ecosystem-cards .eco-card:nth-child(3).scroll-fade   { transition-delay: 0.54s; }
+
+/* ── Green dot ── */
+.green-dot {
+    width: 8px;
+    height: 8px;
+    background: #22c55e;
+    border-radius: 50%;
+    margin-right: 8px;
+    box-shadow: 0 0 6px #22c55e;
+    flex-shrink: 0;
+}
+
+/* ── Chip ── */
+.chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 7px 18px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 999px;
+    font-size: 20px;
+    font-weight: 500;
+    color: #ffffff;
+    letter-spacing: 0.3px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards;
+    animation-delay: 0.35s;
+}
