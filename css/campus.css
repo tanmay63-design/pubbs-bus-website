@@ -12,11 +12,23 @@
 .campus-hero-bg {
     position: absolute;
     inset: 0;
-    background-image: url('../campus_banner.jpg');
+    background-image: url('../campus_banner.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     z-index: 0;
+}
+
+@supports not (background-image: url('x.webp')) {
+    .campus-hero-bg {
+        background-image: url('../campus_banner.jpg');
+    }
+}
+
+@media (max-width: 768px) {
+    .campus-hero-bg {
+        background-image: url('../campus_banner_mobile.webp');
+    }
 }
 
 .campus-hero-content {
@@ -93,6 +105,10 @@
     justify-content: center;
 }
 
+.campus-system-section picture {
+    display: contents;
+}
+
 .campus-system-img {
     width: 1320px;
     max-width: 100%;
@@ -162,6 +178,17 @@
     font-family: 'Inter', sans-serif;
     color: #ffffff;
     white-space: nowrap;
+}
+
+/* Card backgrounds — WebP with JPG fallback */
+.campus-eco-card--1 { background-image: url('../campus_card_1.webp'); }
+.campus-eco-card--2 { background-image: url('../campus_card_2.webp'); }
+.campus-eco-card--3 { background-image: url('../campus_card_3.webp'); }
+
+@supports not (background-image: url('x.webp')) {
+    .campus-eco-card--1 { background-image: url('../campus_card_1.jpg'); }
+    .campus-eco-card--2 { background-image: url('../campus_card_2.jpg'); }
+    .campus-eco-card--3 { background-image: url('../campus_card_3.jpg'); }
 }
 
 /* Staggered scroll-fade for the 3 cards */
@@ -256,6 +283,10 @@
     width: 14px;
     height: 14px;
     fill: #fff;
+}
+
+.campus-detail-row picture {
+    display: contents;
 }
 
 .campus-detail-img {
