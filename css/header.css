@@ -1,19 +1,16 @@
-/* ── Floating Header ── */
+/* ── Header ── */
 header {
     position: fixed;
-    top: 18px;
-    left: 30px;
-    right: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
+    top: 0;
+    left: 0;
+    right: 0;
     z-index: 100;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 76px;
-    padding: 0 24px;
-    background: #1C7BF6;
-    border-radius: 6px;
+    padding: 12px 48px;
+    background: #ffffff;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
     animation: fadeUpHeader 0.7s ease forwards;
     opacity: 0;
     animation-delay: 0.1s;
@@ -26,14 +23,6 @@ header {
     gap: 10px;
 }
 
-.logo-placeholder {
-    width: 40px;
-    height: 40px;
-    background: rgba(255, 255, 255, 0.25);
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    border-radius: 10px;
-}
-
 /* Logo image sizing */
 .site-logo {
     display: block;
@@ -42,7 +31,7 @@ header {
 }
 
 .site-logo--header {
-    max-height: 56px;
+    max-height: 48px;
 }
 
 /* Nav */
@@ -56,7 +45,7 @@ nav a {
     display: flex;
     align-items: center;
     gap: 5px;
-    color: #ffffff;
+    color: #000000;
     text-decoration: none;
     font-size: 14.5px;
     font-weight: 500;
@@ -67,17 +56,16 @@ nav a {
 }
 
 nav a:hover {
-    background: rgba(255, 255, 255, 0.15);
+    background: #DFEDFF;
 }
 
-nav a.active,
-.mobile-menu a.active {
-    background: rgba(255, 255, 255, 0.18);
+nav a.active {
+    background: #DFEDFF;
 }
 
 nav a .arrow {
     font-size: 10px;
-    opacity: 0.8;
+    opacity: 0.6;
 }
 
 /* ── Nav Dropdown ── */
@@ -128,7 +116,7 @@ nav a .arrow {
 
 .nav-dropdown-menu a:hover,
 .nav-dropdown-menu a.active {
-    background: #EFF6FF;
+    background: #DFEDFF;
     color: #1C7BF6;
 }
 
@@ -152,7 +140,7 @@ nav a .arrow {
     display: block !important;
     width: 22px;
     height: 2.5px;
-    background: #ffffff;
+    background: #000000;
     border-radius: 2px;
     transition: transform 0.3s ease, opacity 0.3s ease;
 }
@@ -165,12 +153,12 @@ nav a .arrow {
 .mobile-menu {
     display: none;
     position: fixed;
-    top: 74px;
-    left: 24px;
-    right: 24px;
-    width: auto;
-    background: #1C7BF6;
-    border-radius: 6px;
+    top: 72px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background: #ffffff;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
     z-index: 99;
     flex-direction: column;
     padding: 8px 0;
@@ -189,17 +177,19 @@ nav a .arrow {
 .mobile-menu a {
     display: block;
     padding: 12px 24px;
-    color: #ffffff;
+    color: #000000;
     text-decoration: none;
     font-size: 14px;
     font-weight: 500;
     font-family: 'Inter', sans-serif;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
     transition: background 0.2s ease;
 }
 
 .mobile-menu a:last-child { border-bottom: none; }
-.mobile-menu a:hover { background: rgba(255,255,255,0.1); }
+.mobile-menu a:hover { background: #DFEDFF; }
+
+.mobile-menu a.active { background: #DFEDFF; }
 
 /* ── Mobile submenu (accordion) ── */
 .mobile-menu-toggle {
@@ -210,8 +200,8 @@ nav a .arrow {
     padding: 12px 24px;
     background: none;
     border: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    color: #ffffff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    color: #000000;
     font-size: 14px;
     font-weight: 500;
     font-family: 'Inter', sans-serif;
@@ -221,7 +211,7 @@ nav a .arrow {
 
 .mobile-menu-toggle .arrow {
     font-size: 10px;
-    opacity: 0.8;
+    opacity: 0.5;
     transition: transform 0.2s ease;
 }
 
@@ -234,7 +224,7 @@ nav a .arrow {
     flex-direction: column;
     max-height: 0;
     overflow: hidden;
-    background: rgba(0, 0, 0, 0.15);
+    background: rgba(0, 0, 0, 0.02);
     transition: max-height 0.3s ease;
 }
 
@@ -245,41 +235,40 @@ nav a .arrow {
 .mobile-submenu a {
     padding: 10px 24px 10px 40px;
     font-size: 13px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
 }
 
 .mobile-submenu a:last-child { border-bottom: none; }
 
 .mobile-submenu a.active {
-    color: #ffffff;
-    background: rgba(255, 255, 255, 0.1);
+    color: #1C7BF6;
+    background: #DFEDFF;
 }
 
-/* ── Mobile Header ── */
+/* ── Mobile breakpoint ── */
 @media (max-width: 768px) {
     header {
-        left: 24px !important;
-        right: 24px !important;
-        width: auto !important;
-        max-width: none !important;
-        height: 64px;
         padding: 8px 24px;
-        animation: fadeUpHeaderMobile 0.7s ease forwards 0.1s !important;
     }
+
     header nav {
         display: none !important;
         visibility: hidden !important;
     }
+
     .site-logo--header {
-        height: 42px;
+        max-height: 42px;
         width: auto;
     }
+
     .hamburger {
         display: flex !important;
         visibility: visible !important;
     }
+
     .mobile-menu {
         display: flex;
+        top: 58px;
         z-index: 9999 !important;
     }
 }
