@@ -12,9 +12,7 @@ header {
     justify-content: space-between;
     height: 76px;
     padding: 0 24px;
-    background: #3173c959;
-    backdrop-filter: blur(12.7px);
-    -webkit-backdrop-filter: blur(12.7px);
+    background: #1C7BF6;
     border-radius: 6px;
     animation: fadeUpHeader 0.7s ease forwards;
     opacity: 0;
@@ -171,9 +169,7 @@ nav a .arrow {
     left: 24px;
     right: 24px;
     width: auto;
-    background: #3173c959;
-    backdrop-filter: blur(12.7px);
-    -webkit-backdrop-filter: blur(12.7px);
+    background: #1C7BF6;
     border-radius: 6px;
     z-index: 99;
     flex-direction: column;
