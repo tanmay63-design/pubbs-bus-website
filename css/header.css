@@ -11,9 +11,6 @@ header {
     padding: 12px 48px;
     background: #ffffff;
     box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
-    animation: fadeUpHeader 0.7s ease forwards;
-    opacity: 0;
-    animation-delay: 0.1s;
 }
 
 /* Logo */
