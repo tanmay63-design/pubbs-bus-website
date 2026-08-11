@@ -173,6 +173,20 @@
     color: rgba(255, 255, 255, 0.5);
 }
 
+.footer-legal-link {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    letter-spacing: -0.01em;
+    color: rgba(255, 255, 255, 0.65);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-legal-link:hover {
+    color: #FFFFFF;
+}
+
 .footer-contact-btn {
     display: inline-flex;
     align-items: center;
