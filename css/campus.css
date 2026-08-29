@@ -479,3 +479,687 @@
         -webkit-backdrop-filter: blur(3px);
     }
 }
+
+/* ══════════════════════════════════════════════════════ */
+/* ── Campus Bus Service Information Guide ── */
+/* ══════════════════════════════════════════════════════ */
+.cbs-section {
+    width: 1320px;
+    max-width: calc(100% - 48px);
+    margin: 140px auto 0;
+    display: flex;
+    flex-direction: column;
+    gap: 120px;
+    font-family: 'Inter', sans-serif;
+}
+
+/* ── Intro ── */
+.cbs-intro {
+    max-width: 920px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.cbs-eyebrow {
+    padding: 7px 16px;
+    border-radius: 999px;
+    background: #EFF6FF;
+    border: 1px solid #BFDBFF;
+    color: #2563EB;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.cbs-title {
+    font-size: clamp(30px, 4vw, 48px);
+    font-weight: 600;
+    color: #0A1F3D;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+}
+
+.cbs-lead {
+    font-size: 18px;
+    line-height: 1.7;
+    color: #435B79;
+    font-weight: 400;
+}
+
+/* ── Operating Hours ── */
+.cbs-hours {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+}
+
+.cbs-hours-card {
+    flex: 1 1 340px;
+    max-width: 440px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 24px 28px;
+    background: #EFF6FF;
+    border: 1px solid #BFDBFF;
+    border-radius: 12px;
+}
+
+.cbs-hours-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: #1C7BF6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.cbs-hours-icon svg { width: 26px; height: 26px; fill: #fff; }
+
+.cbs-hours-body {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.cbs-hours-label { font-size: 15px; color: #435B79; font-weight: 500; }
+.cbs-hours-time { font-size: 22px; color: #0A1F3D; font-weight: 600; letter-spacing: -0.01em; }
+
+.cbs-hours-note {
+    flex-basis: 100%;
+    text-align: center;
+    font-size: 15px;
+    color: #435B79;
+    line-height: 1.6;
+    margin-top: 4px;
+}
+
+/* ── Route Groups ── */
+.cbs-group {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.cbs-group-title {
+    font-size: 30px;
+    font-weight: 600;
+    color: #0A1F3D;
+    letter-spacing: -0.02em;
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.cbs-group-title span { font-size: 16px; font-weight: 500; color: #435B79; }
+
+/* ── Route Card ── */
+.cbs-route {
+    border: 1px solid #E2E8F0;
+    border-left: 4px solid var(--line, #1C7BF6);
+    border-radius: 16px;
+    background: #fff;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    box-shadow: 0 4px 24px rgba(10, 31, 61, 0.05);
+}
+
+.cbs-route-head {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.cbs-route-line {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 16px;
+    border-radius: 999px;
+    background: var(--line, #1C7BF6);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+.cbs-route-name { font-size: 24px; font-weight: 600; color: #0A1F3D; }
+
+.cbs-route-stops {
+    background: #F8FAFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 10px;
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.cbs-stops-label {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--line, #1C7BF6);
+}
+
+.cbs-route-stops p {
+    font-size: 15px;
+    line-height: 1.95;
+    color: #334867;
+    font-weight: 500;
+    word-spacing: 2px;
+}
+
+/* ── Route Media (map + schedule) ── */
+.cbs-route-media {
+    display: grid;
+    grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+    gap: 24px;
+    align-items: start;
+}
+
+.cbs-figure {
+    margin: 0;
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+}
+
+.cbs-figure a { display: block; }
+
+.cbs-figure img { width: 100%; height: auto; display: block; }
+
+.cbs-figure figcaption {
+    padding: 12px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #435B79;
+    border-top: 1px solid #EEF2F7;
+    background: #FBFCFE;
+    text-align: center;
+}
+
+/* ── App Download ── */
+.cbs-app {
+    background: linear-gradient(180deg, #EFF6FF 0%, #F8FBFF 100%);
+    border: 1px solid #BFDBFF;
+    border-radius: 16px;
+    padding: 48px;
+}
+
+.cbs-app-info {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.cbs-block-title {
+    font-size: 30px;
+    font-weight: 600;
+    color: #0A1F3D;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+}
+
+.cbs-block-para { font-size: 17px; line-height: 1.7; color: #435B79; }
+
+.cbs-app-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+
+.cbs-app-features li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 16px;
+    color: #334867;
+    font-weight: 500;
+}
+
+.cbs-check {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #4ABC51;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.cbs-check svg { width: 14px; height: 14px; fill: #fff; }
+
+.cbs-download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 4px;
+    padding: 14px 28px;
+    background: #1C7BF6;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.cbs-download-btn svg { width: 20px; height: 20px; fill: #fff; }
+
+.cbs-download-btn:hover { background: #0f66d8; transform: translateY(-2px); }
+
+.cbs-app-note { font-size: 14px; color: #6B7C93; }
+
+/* ── Generic Block ── */
+.cbs-block {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.cbs-block-title--center { text-align: center; }
+
+.cbs-block-para--center { text-align: center; max-width: 720px; margin: 0 auto; }
+
+/* ── Pass Options ── */
+.cbs-pass-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.cbs-pass-card {
+    position: relative;
+    border: 1px solid #E2E8F0;
+    border-radius: 14px;
+    padding: 32px 24px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(10, 31, 61, 0.04);
+}
+
+.cbs-pass-card--highlight {
+    border-color: #1C7BF6;
+    background: linear-gradient(180deg, #EFF6FF, #fff);
+    box-shadow: 0 8px 30px rgba(28, 123, 246, 0.15);
+}
+
+.cbs-pass-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1C7BF6;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+.cbs-pass-name { font-size: 16px; font-weight: 600; color: #435B79; }
+
+.cbs-pass-price {
+    font-size: 44px;
+    font-weight: 700;
+    color: #0A1F3D;
+    letter-spacing: -0.02em;
+    line-height: 1;
+}
+
+.cbs-pass-price small {
+    font-size: 18px;
+    font-weight: 600;
+    color: #435B79;
+    margin-right: 4px;
+    vertical-align: middle;
+}
+
+.cbs-pass-meta { font-size: 14px; color: #6B7C93; }
+
+/* ── Steps ── */
+.cbs-steps {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.cbs-step {
+    display: flex;
+    gap: 18px;
+    padding: 24px;
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+    background: #fff;
+}
+
+.cbs-step-num {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: #1C7BF6;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.cbs-step-body { display: flex; flex-direction: column; gap: 6px; }
+.cbs-step-body h5 { font-size: 18px; font-weight: 600; color: #0A1F3D; }
+.cbs-step-body p { font-size: 15px; line-height: 1.6; color: #435B79; }
+
+.cbs-inline-note {
+    text-align: center;
+    font-size: 15px;
+    color: #435B79;
+    background: #F8FAFF;
+    border: 1px dashed #BFDBFF;
+    border-radius: 10px;
+    padding: 16px 20px;
+}
+
+.cbs-actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.cbs-action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 28px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 10px;
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.cbs-action-btn svg { width: 20px; height: 20px; flex-shrink: 0; }
+
+.cbs-action-btn--primary {
+    background: #1C7BF6;
+    color: #fff;
+}
+
+.cbs-action-btn--primary svg { fill: #fff; }
+
+.cbs-action-btn--primary:hover {
+    background: #0f66d8;
+    transform: translateY(-2px);
+}
+
+.cbs-action-btn--secondary {
+    background: #fff;
+    color: #1C7BF6;
+    border-color: #BFDBFF;
+}
+
+.cbs-action-btn--secondary svg { fill: #1C7BF6; }
+
+.cbs-action-btn--secondary:hover {
+    background: #EFF6FF;
+    border-color: #1C7BF6;
+    transform: translateY(-2px);
+}
+
+/* ── Free Ride ── */
+.cbs-freeride {
+    background: linear-gradient(135deg, #ECFDF5 0%, #F0FDFA 100%);
+    border: 1px solid #A7F3D0;
+    border-radius: 16px;
+    padding: 40px 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.cbs-freeride-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.cbs-freeride-tag {
+    background: #10B981;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.cbs-freeride-head h3 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #0A1F3D;
+    letter-spacing: -0.02em;
+}
+
+.cbs-freeride > p { font-size: 16px; line-height: 1.7; color: #3B5568; }
+
+.cbs-freeride-list {
+    padding-left: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.cbs-freeride-list li { font-size: 16px; line-height: 1.6; color: #3B5568; }
+.cbs-freeride-list li::marker { color: #10B981; font-weight: 700; }
+
+/* ── Reminder ── */
+.cbs-reminder {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    background: #FFF7ED;
+    border: 1px solid #FED7AA;
+    border-radius: 12px;
+    padding: 24px 28px;
+}
+
+.cbs-reminder-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: #F97316;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.cbs-reminder-icon svg { width: 24px; height: 24px; fill: #fff; }
+.cbs-reminder p { font-size: 16px; line-height: 1.6; color: #7C4A17; font-weight: 500; }
+
+/* ── Image zoom cursor ── */
+.cbs-figure a { cursor: zoom-in; }
+
+/* ── Lightbox ── */
+.cbs-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: none;
+    background: rgba(6, 15, 30, 0.92);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+}
+
+.cbs-lightbox.is-open { display: block; }
+
+.cbs-lb-stage {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    touch-action: none;
+    cursor: grab;
+}
+
+.cbs-lb-stage:active { cursor: grabbing; }
+
+.cbs-lb-img {
+    max-width: 92vw;
+    max-height: 88vh;
+    border-radius: 8px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    transform-origin: center center;
+    transition: transform 0.08s linear;
+    will-change: transform;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.cbs-lb-img.is-zoomed { cursor: grab; }
+
+.cbs-lb-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 2;
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.14);
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+}
+
+.cbs-lb-close:hover { background: rgba(255, 255, 255, 0.28); }
+.cbs-lb-close svg { width: 20px; height: 20px; fill: #fff; }
+
+.cbs-lb-controls {
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.12);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+.cbs-lb-controls button {
+    min-width: 44px;
+    height: 40px;
+    padding: 0 16px;
+    border: none;
+    border-radius: 999px;
+    background: transparent;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.cbs-lb-controls button:hover { background: rgba(255, 255, 255, 0.18); }
+.cbs-lb-controls button[data-act="reset"] { font-size: 14px; }
+
+.cbs-lb-hint {
+    position: absolute;
+    top: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.7);
+    font-family: 'Inter', sans-serif;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+    .cbs-lb-hint { display: none; }
+    .cbs-lb-img { max-width: 96vw; max-height: 82vh; }
+}
+
+/* ── CBS Responsive ── */
+@media (max-width: 1600px) {
+    .cbs-section { width: 1100px; gap: 100px; }
+}
+
+@media (max-width: 1024px) {
+    .cbs-route-media { grid-template-columns: 1fr; }
+    .cbs-steps { grid-template-columns: 1fr; }
+    .cbs-pass-grid { grid-template-columns: repeat(2, 1fr); gap: 24px 20px; }
+    .cbs-app { padding: 36px 28px; }
+    .cbs-route { padding: 24px; }
+    .cbs-freeride { padding: 32px 28px; }
+}
+
+@media (max-width: 768px) {
+    .cbs-section { gap: 72px; margin-top: 80px; }
+    .cbs-lead { font-size: 16px; }
+    .cbs-group { gap: 28px; }
+    .cbs-group-title { font-size: 22px; }
+    .cbs-route-name { font-size: 20px; }
+    .cbs-route-stops p { font-size: 14px; line-height: 1.85; }
+    .cbs-block-title { font-size: 24px; }
+    .cbs-block-para { font-size: 15px; }
+    .cbs-pass-grid { grid-template-columns: 1fr 1fr; gap: 20px 14px; }
+    .cbs-pass-card { padding: 26px 16px; }
+    .cbs-pass-price { font-size: 36px; }
+    .cbs-hours-card { flex: 1 1 100%; padding: 20px 22px; }
+    .cbs-app { padding: 28px 20px; }
+    .cbs-route { padding: 20px; }
+    .cbs-freeride { padding: 28px 22px; }
+    .cbs-freeride-head h3 { font-size: 22px; }
+    .cbs-step { padding: 20px; }
+    .cbs-reminder { padding: 20px 22px; align-items: flex-start; }
+}
+
+@media (max-width: 480px) {
+    .cbs-pass-grid { grid-template-columns: 1fr; }
+}
